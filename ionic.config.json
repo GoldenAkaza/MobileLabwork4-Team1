@@ -1,0 +1,7 @@
+{
+  "name": "Todo-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
