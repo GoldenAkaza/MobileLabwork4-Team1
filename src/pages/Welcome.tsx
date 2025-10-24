@@ -7,7 +7,7 @@ const Welcome: React.FC = () => {
   const history = useHistory();
 
   const handleStart = () => {
-    history.push('/todo');
+    history.push('/Home');
   };
 
   return (
