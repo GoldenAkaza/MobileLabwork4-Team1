@@ -1,52 +1,61 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import AddEditTask from "./pages/AddEditTask";
+import { AuthProvider, useAuth } from "./auth/AuthContext";
 
 /* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
+import "@ionic/react/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
-
-/* Theme variables */
-import './theme/variables.css';
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
+const PrivateRoute: React.FC<{ path: string; component: React.FC; exact?: boolean }> = ({ component: Comp, ...rest }) => {
+  const { user, loading } = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={(props) => (loading ? null : user ? <Comp {...props} /> : <Redirect to="/login" />)}
+    />
+  );
+};
+
+const AppInner: React.FC = () => {
+  return (
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
+        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact component={Register} />
+        <PrivateRoute path="/home" exact component={Home} />
+        <PrivateRoute path="/task" exact component={AddEditTask} />
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
+  );
+};
+
+const App: React.FC = () => (
+  <IonApp>
+    <AuthProvider>
+      <AppInner />
+    </AuthProvider>
   </IonApp>
 );
 
