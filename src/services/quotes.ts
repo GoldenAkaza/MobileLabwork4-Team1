@@ -14,6 +14,12 @@ export async function getMotivationalQuote(): Promise<{ q: string; a: string }> 
       },
     });
 
+
+
+
+
+    
+
     // The API returns an array like:
     // [ { quote: "Your quote here", author: "Author Name", category: "motivational" } ]
     const data = Array.isArray(res.data) ? res.data[0] : res.data;
