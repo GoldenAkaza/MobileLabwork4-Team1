@@ -1,0 +1,57 @@
+.welcome-container {
+  --background: linear-gradient(135deg, #8fbbfd, #333fac);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 2rem;
+}
+
+.welcome-content {
+  max-width: 340px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome-content h1 {
+  font-weight: 800;
+  color: #93b3fd;
+  margin-bottom: 0.5rem;
+  font-size: 40px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-content h3 {
+  color: #482468;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.welcome-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(197, 214, 255, 0.9);
+  margin: 0 auto 2rem;
+  max-width: 320px;  
+}
+
+.start-button {
+  --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
+  --color: #10132e;
+  --border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 180px;
+  margin: 0 auto;
+}
+
+.start-button:hover {
+  --background:linear-gradient(135deg, #5e6ce6, #482468);
+  --color: #fcfcfd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(85, 99, 222, 0.4);
+}
