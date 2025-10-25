@@ -16,7 +16,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { Link, useHistory } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import './Login.css'
+import './Welcome.css'
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
