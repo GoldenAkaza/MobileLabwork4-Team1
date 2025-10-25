@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useHistory, Link } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
+import "./Welcome.css"
 
 export default function Register() {
   const [email, setEmail] = useState(""); 
@@ -25,10 +26,11 @@ export default function Register() {
   };
 
   return (
-    <IonPage>
+    <IonPage className="welcome-container">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Create Account</IonTitle>
+          <IonTitle>
+            <div className="welcome-content"><h1>Create Account</h1></div></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -43,7 +45,7 @@ export default function Register() {
           </IonItem>
         </IonList>
         {error && <IonText color="danger"><p>{error}</p></IonText>}
-        <IonButton expand="block" onClick={register}>Sign up</IonButton>
+        <IonButton className="start-button" expand="block" onClick={register}>Sign up</IonButton>
         <p style={{ marginTop: 12 }}>
           Already have an account? <Link to="/login">Log in</Link>
         </p>

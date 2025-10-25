@@ -16,6 +16,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { Link, useHistory } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
+import './Welcome.css'
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
@@ -46,10 +47,11 @@ export default function Login() {
   };
 
   return (
-    <IonPage>
+    <IonPage className="welcome-container">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Study Planner — Login</IonTitle>
+          <IonTitle>
+            <div className="welcome-content"><h1>Study Planner</h1></div></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -64,8 +66,8 @@ export default function Login() {
           </IonItem>
         </IonList>
         {error && <IonText color="danger"><p>{error}</p></IonText>}
-        <IonButton expand="block" onClick={login}>Log in</IonButton>
-        <IonButton expand="block" fill="outline" onClick={loginWithGoogle}>Continue with Google</IonButton>
+        <IonButton className="start-button" expand="block" onClick={login}>Log in</IonButton>
+        <IonButton className="start-button" expand="block" fill="outline" onClick={loginWithGoogle}>Continue with Google</IonButton>
         <p style={{ marginTop: 12 }}>
           New here? <Link to="/register">Create an account</Link>
         </p>
