@@ -51,7 +51,7 @@ export default function Login() {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            <div className="welcome-content"><h1>Study Planner</h1></div></IonTitle>
+            <div className="welcome-content"><h1>My Study Planner</h1></div></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">

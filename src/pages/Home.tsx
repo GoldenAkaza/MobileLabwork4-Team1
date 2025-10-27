@@ -1,6 +1,6 @@
 import {
   IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonList,
-  IonLoading, IonMenuButton, IonPage, IonTitle, IonToolbar, IonToast
+  IonLoading, IonPage, IonTitle, IonToolbar, IonToast
 } from "@ionic/react";
 import { add, logOutOutline } from "ionicons/icons";
 import React, { useEffect, useMemo, useState } from "react";
@@ -140,9 +140,9 @@ export default function Home() {
     <IonPage className="home-container">
       <IonHeader>
         <IonToolbar>
-          <IonTitle><div className="home-content"><h1>My Study Planner</h1></div></IonTitle>
+          <IonTitle className="home-content"><h1>My Study Planner</h1></IonTitle>
           <IonButtons slot="end">
-            <IonButton className="start-button" onClick={() => signOut(auth)}>
+            <IonButton className="home-button" onClick={() => signOut(auth)}>
               <IonIcon icon={logOutOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>

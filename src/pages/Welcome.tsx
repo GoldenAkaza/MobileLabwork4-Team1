@@ -14,8 +14,7 @@ const Welcome: React.FC = () => {
     <IonPage>
       <IonContent fullscreen className="welcome-container">
         <div className="welcome-content">
-          <h1>To-Do</h1>
-          <h3>Welcome to To-Do!</h3>
+          <h3>My study planner</h3>
           <p>
             This simple app helps you organize your daily tasks easily.
             Add new tasks, mark them as done, and stay productive! For each
