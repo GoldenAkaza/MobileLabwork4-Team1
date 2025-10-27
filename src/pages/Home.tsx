@@ -23,7 +23,7 @@ import TaskItem, { Task } from "../components/TaskItem";
 import { signOut } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { getMotivationalQuote } from "../services/quotes";
-import "./Welcome.css"
+import "./Home.css"
 
 
 const taskConverter: FirestoreDataConverter<Task> = {
@@ -137,11 +137,10 @@ export default function Home() {
   if (loading) return <IonLoading isOpen message="Loading..." />;
 
   return (
-    <IonPage className="welcome-container">
+    <IonPage className="home-container">
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start"><IonMenuButton /></IonButtons>
-          <IonTitle><div className="welcome-content"><h1>My Study Planner</h1></div></IonTitle>
+          <IonTitle><div className="home-content"><h1>My Study Planner</h1></div></IonTitle>
           <IonButtons slot="end">
             <IonButton className="start-button" onClick={() => signOut(auth)}>
               <IonIcon icon={logOutOutline} slot="icon-only" />

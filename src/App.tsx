@@ -46,7 +46,7 @@ const AppInner: React.FC = () => {
         <PrivateRoute path="/home" exact component={Home} />
         <PrivateRoute path="/task" exact component={AddEditTask} />
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/welcome" />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
