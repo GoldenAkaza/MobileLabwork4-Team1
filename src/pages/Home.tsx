@@ -3,6 +3,7 @@ import {
   IonLoading, IonPage, IonTitle, IonToolbar, IonToast
 } from "@ionic/react";
 import { add, logOutOutline } from "ionicons/icons";
+import { settingsOutline } from "ionicons/icons";
 import React, { useEffect, useMemo, useState } from "react";
 import { auth, db } from "../firebase";
 import {
@@ -142,6 +143,9 @@ export default function Home() {
         <IonToolbar>
           <IonTitle className="home-content"><h1>My Study Planner</h1></IonTitle>
           <IonButtons slot="end">
+            <IonButton onClick={() => history.push("/settings")}>
+             <IonIcon icon={settingsOutline} slot="icon-only" />
+            </IonButton>
             <IonButton className="home-button" onClick={() => signOut(auth)}>
               <IonIcon icon={logOutOutline} slot="icon-only" />
             </IonButton>

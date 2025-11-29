@@ -18,3 +18,21 @@
   margin: 0 auto 2rem;
   max-width: 320px;  
 }
+
+/* Very simple dark theme overrides */
+body.dark {
+  --ion-background-color: #020b1f;
+  --ion-background-color-rgb: 11, 17, 32;
+
+  --ion-text-color: #f9fafb;
+  --ion-text-color-rgb: 249, 250, 251;
+
+  --ion-color-primary: #4f46e5;
+  --ion-color-primary-rgb: 79, 70, 229;
+
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+
+  --ion-color-medium: #9ca3af;
+  --ion-color-light: #1f2933;
+}
