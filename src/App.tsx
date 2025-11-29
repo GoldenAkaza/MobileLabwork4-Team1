@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import AddEditTask from "./pages/AddEditTask";
+import Settings from "./pages/Settings";
+import ChangePassword from "./pages/ChangePassword";
 import { AuthProvider, useAuth } from "./auth/AuthContext";
 
 /* Core CSS required for Ionic components to work properly */
@@ -45,6 +47,8 @@ const AppInner: React.FC = () => {
         <Route path="/welcome" exact component={Welcome} />
         <PrivateRoute path="/home" exact component={Home} />
         <PrivateRoute path="/task" exact component={AddEditTask} />
+        <PrivateRoute path="/settings" exact component={Settings} />
+        <PrivateRoute path="/change-password" exact component={ChangePassword} />
         <Route exact path="/">
           <Redirect to="/welcome" />
         </Route>
