@@ -13,13 +13,6 @@
 }
 
 
-/* HUOM! This causes the top bar to become dark despite it being in light mode
-ion-header, ion-toolbar {
-    --background: transparent;
-    --border-width: 0;
-    --box-shadow: none;
-}
-*/
 
 ion-toolbar {
   --align-items: center;
