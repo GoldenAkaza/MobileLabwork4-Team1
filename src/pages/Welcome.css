@@ -10,7 +10,14 @@
 .welcome-content {
   max-width: 340px;
   margin: 0 auto;
+  margin-top: 40px;
+  padding: 20px;
   text-align: center;
+}
+
+ion-toolbar.custom-header {
+  --background: #ffffff;
+  font-weight: bold;
 }
 
 .welcome-content h1 {
@@ -27,9 +34,9 @@
 }
 
 .welcome-content p {
-  font-size: 1rem;
+  font-size: 0.75rem;
   line-height: 1.6;
-  color: rgba(197, 214, 255, 0.9);
+  color: #546a9e;
   margin: 0 auto 2rem;
   max-width: 320px;  
 }
@@ -37,12 +44,11 @@
 .start-button {
   --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
   --color: #10132e;
-  --border-radius: 12px;
+  --border-radius: 10px;
   font-weight: 600;
   font-size: 1rem;
   text-transform: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   width: 180px;
   margin: 0 auto;
 }

@@ -9,7 +9,7 @@
   box-shadow: none;
   max-width: 340px;
   margin: 0px auto;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
   text-align: center;
   border-radius: 10px;
   color: #546a9e;
@@ -30,14 +30,14 @@ ion-toolbar.custom-header {
 }
 
  
-/* ? Janinan css:stä */
+/* ? */
 ion-header, ion-toolbar {
     --background-color: white;
     --border-width: 0;
     --box-shadow: none;
 }
  
-/* ? Janinan css:stä*/
+/* ? */
 ion-toolbar {
   --align-items: center;
 }
@@ -69,7 +69,7 @@ ion-toolbar ion-button {
   border-radius: 8px;
   background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
   padding: 10px;
-  height: 160px;
+  height: 170px;
   display: flex;
   margin: 10px;
   margin-bottom: -60px;
@@ -135,11 +135,29 @@ ion-datetime {
 .btn-round {
     color: #546a9e;
     margin: 10px;
+    --background: white;
+  --color: #10132e;
+  --border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: none;
+  transition: all 0.3s ease;
+  width: 120px;
+  margin: 0 auto;
 }
 
 .btn-round2 {
-    color: black;
+    color: rgb(255, 255, 255);
     margin: 10px;
+    --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
+  --color: #10132e;
+  --border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: none;
+  transition: all 0.3s ease;
+  width: 120px;
+  margin: 0 auto;
 }
 
 .task-list {
@@ -196,7 +214,7 @@ ion-checkbox {
 .quote-image-placeholder {
   width: 80px;
   height: 80px;
-  background-color: #dce6f2; /* Harmahtava laatikko */
+  background-color: #dce6f2;
   border-radius: 4px;
   flex-shrink: 0;
   margin-right: 15px;
