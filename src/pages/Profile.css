@@ -12,11 +12,14 @@
   text-align: center;
 }
 
+
+/* HUOM! This causes the top bar to become dark despite it being in light mode
 ion-header, ion-toolbar {
     --background: transparent;
     --border-width: 0;
     --box-shadow: none;
 }
+*/
 
 ion-toolbar {
   --align-items: center;
@@ -159,4 +162,38 @@ ion-item {
     border-top: 1px solid rgba(0,0,0,0.1);
     padding-top: 5px;
     margin-top: 5px;
+}
+
+body.dark .content-background {
+  --background: linear-gradient(135deg, #1c2b55, #0e142f);
+  color: #e8edff;
+}
+
+body.dark ion-header,
+body.dark ion-toolbar {
+  --background: transparent;
+}
+
+body.dark ion-title {
+  color: #b6c7ff;
+}
+
+body.dark ion-label,
+body.dark ion-label p,
+body.dark .insp-footer,
+body.dark .badge {
+  color: #c9d6ff !important;
+}
+
+body.dark ion-list,
+body.dark .inspiration-card {
+  --background: var(--card-bg-dark);
+}
+
+body.dark .profile-main-item {
+  color: #d7e0ff;
+}
+
+body.dark .inspiration-card {
+  background: var(--card-bg-dark-strong);
 }

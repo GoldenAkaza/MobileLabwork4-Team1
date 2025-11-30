@@ -1,0 +1,50 @@
+.settings-container {
+  --background: linear-gradient(135deg, #8fbbfd, #333fac);
+  display: flex;
+  color: rgb(255, 255, 255);
+}
+
+
+.settings-page {
+
+}
+
+.settings-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 10px 0;
+  margin: 20px 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+/* Removes default ion-list background */
+.settings-card ion-list {
+  --background: transparent !important;
+  --ion-item-background: transparent !important;
+  background: transparent !important;
+}
+
+
+
+
+
+/*
+body.dark .settings-page ion-list {
+  background: #020b1f!important;
+}*/
+
+body.dark .settings-card {
+  background: #020b1f !important;; /* using your theme color */
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark mode list transparency */
+body.dark .settings-card ion-list {
+  --background: transparent !important;
+  --ion-item-background: transparent !important;
+}
+
+body.dark .settings-container {
+  --background: linear-gradient(135deg, #1a2550, #0e142f);
+  display: flex;
+}

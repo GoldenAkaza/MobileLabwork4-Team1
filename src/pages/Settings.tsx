@@ -34,6 +34,7 @@ import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
 import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useAuth } from "../auth/AuthContext";
+import './Settings.css';
 
 type SettingsState = {
   push: boolean;
@@ -139,110 +140,123 @@ export default function Settings() {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent className="ion-padding">
+      <IonContent className="settings-container">
 
         {/* Account */}
-        <IonList inset>
-          <IonItem lines="full">
-            <IonIcon slot="start" icon={mailOutline} />
-            <IonLabel>
-              <h2>Account</h2>
-              <p>Email</p>
-            </IonLabel>
-            <IonNote slot="end">{user?.email ?? "your.email@example.com"}</IonNote>
-          </IonItem>
+        <div className="settings-card">
+          <IonList inset>
+            <IonItem lines="full">
+              <IonLabel>
+                <h2>Account</h2>
+              </IonLabel>
+            </IonItem>
 
-          <IonItem button routerLink="/change-password">
-           <IonIcon slot="start" icon={lockClosedOutline} />
-           <IonLabel>Change Password</IonLabel>
-           <IonNote slot="end">…</IonNote>
-          </IonItem>
+            <IonItem lines="full">
+              <IonIcon slot="start" icon={mailOutline} />
+              <IonLabel>
+                <p>Email</p>
+              </IonLabel>
+              <IonNote slot="end">{user?.email ?? "your.email@example.com"}</IonNote>
+            </IonItem>
 
-          <IonItem button detail={false} onClick={() => signOut(auth)} lines="none">
-            <IonIcon slot="start" icon={logOutOutline} color="danger" />
-            <IonLabel color="danger">Log Out</IonLabel>
-          </IonItem>
-        </IonList>
+            <IonItem button routerLink="/change-password">
+            <IonIcon slot="start" icon={lockClosedOutline} />
+            <IonLabel>Change Password</IonLabel>
+            <IonNote slot="end">…</IonNote>
+            </IonItem>
+
+            <IonItem button detail={false} onClick={() => signOut(auth)} lines="none">
+              <IonIcon slot="start" icon={logOutOutline} color="danger" />
+              <IonLabel color="danger">Log Out</IonLabel>
+            </IonItem>
+          </IonList>
+        </div>
 
         {/* Notifications */}
-        <IonList inset>
-          <IonItem lines="full">
-            <IonLabel>
-              <h2>Notifications</h2>
-            </IonLabel>
-          </IonItem>
+        <div className="settings-card">
+          <IonList  inset>
+            <IonItem lines="full">
+              <IonLabel>
+                <h2>Notifications</h2>
+              </IonLabel>
+            </IonItem>
 
-          <IonItem>
-            <IonIcon slot="start" icon={notificationsOutline} />
-            <IonLabel>Push Notifications</IonLabel>
-            <IonToggle
-              checked={s.push}
-              onIonChange={onToggle("push")}
-            />
-          </IonItem>
+            <IonItem>
+              <IonIcon slot="start" icon={notificationsOutline} />
+              <IonLabel>Push Notifications</IonLabel>
+              <IonToggle
+                checked={s.push}
+                onIonChange={onToggle("push")}
+              />
+            </IonItem>
 
-          <IonItem>
-            <IonIcon slot="start" icon={calendarOutline} />
-            <IonLabel>Daily Reminders</IonLabel>
-            <IonToggle
-              checked={s.dailyReminders}
-              onIonChange={onToggle("dailyReminders")}
-            />
-          </IonItem>
-        </IonList>
+            <IonItem>
+              <IonIcon slot="start" icon={calendarOutline} />
+              <IonLabel>Daily Reminders</IonLabel>
+              <IonToggle
+                checked={s.dailyReminders}
+                onIonChange={onToggle("dailyReminders")}
+              />
+            </IonItem>
+          </IonList>
+        </div>
 
         {/* Appearance & Sound */}
-        <IonList inset>
-          <IonItem lines="full">
-            <IonLabel>
-              <h2>Appearance & Sound</h2>
-            </IonLabel>
-          </IonItem>
+          <div className="settings-card">
+            <IonList inset>
+              <IonItem lines="full">
+                <IonLabel>
+                  <h2>Appearance & Sound</h2>
+                </IonLabel>
+              </IonItem>
 
-          <IonItem>
-            <IonIcon slot="start" icon={sunnyOutline} />
-            <IonLabel>Theme</IonLabel>
-            <IonButton slot="end" size="small" onClick={toggleTheme}>
-                {themeLabel}
-            </IonButton>
-          </IonItem>
+              <IonItem>
+                <IonIcon slot="start" icon={sunnyOutline} />
+                <IonLabel>Theme</IonLabel>
+                <IonButton slot="end" size="small" onClick={toggleTheme}>
+                    {themeLabel}
+                </IonButton>
+              </IonItem>
 
-          <IonItem>
-            <IonIcon slot="start" icon={musicalNotesOutline} />
-            <IonLabel>Sound Effects</IonLabel>
-            <IonToggle
-              checked={s.soundEffects}
-              onIonChange={onToggle("soundEffects")}
-            />
-          </IonItem>
+              <IonItem>
+                <IonIcon slot="start" icon={musicalNotesOutline} />
+                <IonLabel>Sound Effects</IonLabel>
+                <IonToggle
+                  checked={s.soundEffects}
+                  onIonChange={onToggle("soundEffects")}
+                />
+              </IonItem>
 
-          <IonItem>
-            <IonIcon slot="start" icon={volumeHighOutline} />
-            <IonLabel>Task Completion Sound</IonLabel>
-            <IonToggle
-              checked={s.completionSound}
-              onIonChange={onToggle("completionSound")}
-            />
-          </IonItem>
-        </IonList>
+              <IonItem>
+                <IonIcon slot="start" icon={volumeHighOutline} />
+                <IonLabel>Task Completion Sound</IonLabel>
+                <IonToggle
+                  checked={s.completionSound}
+                  onIonChange={onToggle("completionSound")}
+                />
+              </IonItem>
+            </IonList>
+          </div>
 
-        {/* Data */}
-        <IonList inset>
-          <IonItem lines="full">
-            <IonLabel>
-              <h2>Data</h2>
-            </IonLabel>
-          </IonItem>
+          {/* Data */}
+          <div className="settings-card">
+            <IonList inset>
+              <IonItem lines="full">
+                <IonLabel>
+                  <h2>Data</h2>
+                </IonLabel>
+              </IonItem>
 
-          <IonItem
-            button
-            detail={false}
-            onClick={() => setConfirmClear(true)}
-          >
-            <IonIcon slot="start" icon={trashOutline} color="danger" />
-            <IonLabel color="danger">Clear All Data</IonLabel>
-          </IonItem>
-        </IonList>
+              <IonItem
+                button
+                detail={false}
+                onClick={() => setConfirmClear(true)}
+              >
+                <IonIcon slot="start" icon={trashOutline} color="danger" />
+                <IonLabel color="danger">Clear All Data</IonLabel>
+              </IonItem>
+            </IonList>
+          </div>
 
         <IonAlert
           isOpen={confirmClear}

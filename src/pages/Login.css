@@ -37,3 +37,22 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(85, 99, 222, 0.4);
 }
+
+body.dark .welcome-container {
+  --background: linear-gradient(135deg, #1c2b55, #0a0f2d) !important;
+}
+
+body.dark .login-card {
+  background-color: var(--card-bg-dark);
+  box-shadow: none;
+}
+
+body.dark .start-button {
+  --background: linear-gradient(135deg, #3c4fa8, #1d275b);
+  --color: #ffffff;
+}
+
+body.dark .start-button:hover {
+  --background: linear-gradient(135deg, #5568d1, #2b2f72);
+  --color: #ffffff;
+}

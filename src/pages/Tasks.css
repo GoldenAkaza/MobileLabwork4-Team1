@@ -286,8 +286,50 @@ ion-checkbox {
   color: #ffffff;
 }
 
+/*Navigation bar light mode color*/
 ion-tab-bar {
   --background: #ffffff;
   border-top: 1px solid #eaebed;
   padding-bottom: 5px;
 }
+
+/*Task Dark mode*/
+body.dark .content-background {
+  --background: linear-gradient(135deg, #1a2550, #0e142f);
+  color: #e8edff;
+}
+
+body.dark ion-toolbar.custom-header {
+  --background: #020b1f;
+}
+
+body.dark .welcome-content {
+  background: var(--card-bg-dark);
+  color: #d2dcff;
+}
+
+body.dark .inspiration-card {
+  background: linear-gradient(135deg, #1f2a44, #121729);
+  color: #d7e0ff;
+}
+
+
+body.dark .custom-input-container {
+  background: var(--card-bg-dark);
+  border-color: #334169;
+}
+
+body.dark ion-checkbox {
+  --checkbox-background: #1e2a4d;
+  --border-color: #475b8c;
+  --checkmark-color: #ffffff;
+}
+
+/*Navigation bar dark mode color*/
+body.dark ion-tab-bar {
+  --background: #020b1f;
+  border-top: 1px solid #020b1f;
+  padding-bottom: 5px;
+}
+
+
