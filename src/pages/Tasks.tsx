@@ -16,25 +16,18 @@ import {
   IonRow,
   IonCol,
   IonText,
-  IonFooter,
   IonItem,
-  IonTabBar,
-  IonTabButton,
   IonButtons
 
 } from '@ionic/react';
 import { 
   personCircle, 
   checkmarkCircle, 
-  homeOutline, 
-  calendarOutline, 
-  personOutline, 
-  settingsOutline ,
   chevronBackOutline
 } from 'ionicons/icons';
 import './Tasks.css';
 
-const StudyPlanner: React.FC = () => {
+const Tasks: React.FC = () => {
   const [tasks] = useState([
     { id: 1, text: 'Finish assignment', due: 'Tomorrow', completed: false },
     { id: 2, text: 'Read chapter 5', due: 'Tonight', completed: true },
@@ -173,29 +166,8 @@ const StudyPlanner: React.FC = () => {
         </div>
       </IonContent>
 
-      <IonFooter>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonIcon icon={homeOutline} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="calendar" href="/calendar">
-            <IonIcon icon={calendarOutline} />
-            <IonLabel>Calendar</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="settings" href="/settings">
-            <IonIcon icon={settingsOutline} />
-            <IonLabel>Settings</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonFooter>
-
     </IonPage>
   );
 };
 
-export default StudyPlanner;
+export default Tasks;

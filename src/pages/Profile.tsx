@@ -1,16 +1,14 @@
-import React from "react";
 import {
     IonButton, IonButtons, IonCard, IonCardContent,
     IonCol,
     IonContent,
-    IonFooter,
     IonGrid,
     IonHeader,
-    IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonTabBar, IonTabButton, IonThumbnail,
+    IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonThumbnail,
     IonTitle,
     IonToolbar
 } from '@ionic/react';
-import { chevronBackOutline, cameraReverseOutline, bookOutline, calendarOutline, homeOutline, personOutline, settingsOutline, timeOutline } from "ionicons/icons";
+import { chevronBackOutline, cameraReverseOutline, bookOutline, timeOutline } from "ionicons/icons";
 import "./Profile.css"
 
 function Profile() {
@@ -90,28 +88,6 @@ function Profile() {
                     </IonCardContent>
                 </IonCard>
             </IonContent>
-
-
-            <IonFooter>
-                <IonTabBar slot="bottom">
-                    <IonTabButton tab="home" href="/home">
-                        <IonIcon icon={homeOutline} />
-                        <IonLabel>Home</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="calendar" href="/calendar">
-                        <IonIcon icon={calendarOutline} />
-                        <IonLabel>Calendar</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="profile" href="/profile">
-                        <IonIcon icon={personOutline} />
-                        <IonLabel>Profile</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="settings" href="/settings">
-                        <IonIcon icon={settingsOutline} />
-                        <IonLabel>Settings</IonLabel>
-                    </IonTabButton>
-                </IonTabBar>
-            </IonFooter>
         </IonPage>
     );
 }
