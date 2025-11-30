@@ -29,11 +29,6 @@ ion-toolbar.custom-header {
   font-weight: bold;
 }
 
-ion-toolbar.custom-header2 {
-  --background: #ffffff;
-  font-weight: bold;
-}
-
  
 /* ? Janinan css:stä */
 ion-header, ion-toolbar {

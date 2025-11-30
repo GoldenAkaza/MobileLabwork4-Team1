@@ -45,7 +45,7 @@ const StudyPlanner: React.FC = () => {
     <IonPage>
 
       <IonHeader>
-        <IonToolbar className= "custom-header2">
+        <IonToolbar className= "custom-header">
           <IonButtons slot="start">
             <IonButton fill="clear">
               <IonIcon icon={chevronBackOutline} />
