@@ -31,7 +31,7 @@ const Welcome: React.FC = () => {
         </IonHeader>
 
 
-      <IonContent fullscreen className="welcome-container">
+      <IonContent className="welcome-container">
         <div className="welcome-content">
           <h3>My study planner</h3>
           <p>

@@ -1,0 +1,39 @@
+.welcome-container {
+  --background: linear-gradient(135deg, #8fbbfd, #333fac) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.login-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  max-width: 340px;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.start-button {
+  --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
+  --color: #10132e;
+  --border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: none;
+  transition: all 0.3s ease;
+  width: 180px;
+  margin: 15px auto !important;
+}
+
+.start-button:hover {
+  --background:linear-gradient(135deg, #5e6ce6, #482468);
+  --color: #fcfcfd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(85, 99, 222, 0.4);
+}

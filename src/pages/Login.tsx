@@ -10,13 +10,14 @@ import {
   IonTitle,
   IonToolbar,
   IonText,
+  IonButtons
 } from "@ionic/react";
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { Link, useHistory } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import './Welcome.css'
+import './Login.css'
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
@@ -47,14 +48,18 @@ export default function Login() {
   };
 
   return (
-    <IonPage className="welcome-container">
+    <IonPage >
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>
-            <div className="welcome-content"><h1>My Study Planner</h1></div></IonTitle>
+        <IonToolbar className= "custom-header">
+          <IonButtons slot="start">
+            <IonButton fill="clear">
+            </IonButton>
+          </IonButtons>
+            <IonTitle>My Study Planner</IonTitle>
         </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
+        </IonHeader>
+      <IonContent className="welcome-container">
+        <div className="login-card">
         <IonList>
           <IonItem>
             <IonLabel position="stacked">Email</IonLabel>
@@ -71,6 +76,7 @@ export default function Login() {
         <p style={{ marginTop: 12 }}>
           New here? <Link to="/register">Create an account</Link>
         </p>
+        </div>
       </IonContent>
     </IonPage>
   );
