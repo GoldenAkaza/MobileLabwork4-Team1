@@ -121,7 +121,7 @@ ion-list, .inspiration-card {
 }
 .goals {
     --background: transparent;
-    margin-bottom: 25px !important;;
+    margin-bottom: 15px !important;;
 }
 
 ion-item {
@@ -138,10 +138,11 @@ ion-item {
 .inspiration-card {
     border-radius: 8px;
     padding: 10px;
-    height: 160px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: visible !important;
 }
 .badge {
     background-color: rgba(0,0,0,0.1);

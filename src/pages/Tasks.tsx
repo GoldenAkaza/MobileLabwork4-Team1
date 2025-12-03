@@ -10,13 +10,13 @@ import {
   IonDatetime,
   IonButton,
   IonList,
-  IonCheckbox,
+  
   IonIcon,
   IonGrid,
   IonRow,
   IonCol,
   IonText,
-  IonItem,
+  
   IonButtons
 
 } from '@ionic/react';
@@ -26,13 +26,13 @@ import {
   chevronBackOutline
 } from 'ionicons/icons';
 import './Tasks.css';
+import TaskItem from '../components/TaskItem'; 
+import { useTasks } from './TaskContext';
 
 const Tasks: React.FC = () => {
-  const [tasks] = useState([
-    { id: 1, text: 'Finish assignment', due: 'Tomorrow', completed: false },
-    { id: 2, text: 'Read chapter 5', due: 'Tonight', completed: true },
-    { id: 3, text: 'Prepare for exam', due: 'Next week', completed: false },
-  ]);
+  const { tasks, toggleTaskCompletion, deleteTask, onEdit } = useTasks();
+
+  
 
   return (
     <IonPage>
@@ -90,18 +90,14 @@ const Tasks: React.FC = () => {
 
           <IonList lines="none" className="task-list">
             {tasks.map((task) => (
-              <IonItem key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-                <IonCheckbox 
-                  slot="start" 
-                  checked={task.completed} 
-                  className="custom-checkbox"
-                />
-                <div className="task-content mono-font">
-                  <div className="task-text">{task.text}</div>
-                  <div className="task-due">Due: {task.due}</div>
-                </div>
-              </IonItem>
-            ))}
+                            <TaskItem 
+                                key={task.id} 
+                                task={task} 
+                                onToggle={toggleTaskCompletion} 
+                                onEdit={onEdit}
+                                onDelete={deleteTask}
+                            />
+                        ))}
           </IonList>
 
           <div className="spacer"></div>
@@ -121,24 +117,21 @@ const Tasks: React.FC = () => {
           </div>
 
           <div className="spacer"></div>
-          <h3 className="mono-font section-title">Your Completed Tasks</h3>
-          
-          <div className="completed-list">
-            <div className="completed-item">
-              <IonIcon icon={checkmarkCircle} color="primary" className="check-icon" />
-              <div className="mono-font">
-                <div className="task-text">Read chapter 5</div>
-                <div className="task-subtext">Great job on finishing it!</div>
-              </div>
+            <h3 className="mono-font section-title">Your Completed Tasks</h3>
+            
+            <div className="completed-list">
+                {/* 💡 ADDITION: Filter the tasks array to get only completed tasks */}
+                {tasks.filter(t => t.completed).map((task) => (
+                    // 💡 CHANGE: Use dynamic task data from the filtered list
+                    <div key={task.id} className="completed-item">
+                        <IonIcon icon={checkmarkCircle} color="primary" className="check-icon" />
+                        <div className="mono-font">
+                            <div className="task-text">{task.title}</div> {/* Use task.title */}
+                            <div className="task-subtext">{task.notes || 'Task completed successfully!'}</div> {/* Use task.notes or a default message */}
+                        </div>
+                    </div>
+                ))}
             </div>
-             <div className="completed-item">
-              <IonIcon icon={checkmarkCircle} color="primary" className="check-icon" />
-              <div className="mono-font">
-                <div className="task-text">Finish an essay</div>
-                <div className="task-subtext">Keep up the excellent work!</div>
-              </div>
-            </div>
-          </div>
 
           <div className="spacer"></div>
           <h3 className="mono-font section-title">Your Past Inspiration</h3>
