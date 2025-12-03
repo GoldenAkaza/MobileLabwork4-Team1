@@ -1,8 +1,8 @@
-// src/context/TaskContext.tsx - FIXED
+// TaskContext.tsx
 
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-// Reusing your Task type definition
+// Define the Task type to ensure consistency across the application
 export type Task = {
     id: string; 
     title: string;
@@ -13,40 +13,40 @@ export type Task = {
     createdAt: number; 
 };
 
-// 💡 FIX 1: Define the shape of the Context, including the required onEdit function
+// Define the Context Interface
 interface TaskContextType {
     tasks: Task[];
     tasksDone: number;
+    addTask: (task: Task) => void;
     toggleTaskCompletion: (task: Task, isCompleted: boolean) => void;
     deleteTask: (task: Task) => void;
-    onEdit: (task: Task) => void; // <-- ADDED: The function used in Tasks.tsx
+    onEdit: (task: Task) => void; 
 }
 
-// Initial Tasks 
+// Initial Tasks (Using the global structure)
 const initialTasks: Task[] = [
-    { id: '1', title: 'Finish assignment', userId: 'u1', createdAt: Date.now(), completed: false },
-    { id: '2', title: 'Read chapter 5', userId: 'u1', createdAt: Date.now(), completed: true },
-    { id: '3', title: 'Prepare for exam', userId: 'u1', createdAt: Date.now(), completed: false },
+    { id: '1', title: 'Finish assignment', userId: 'u1', createdAt: Date.now(), completed: false, dueDate: '2023-10-25' },
+    { id: '2', title: 'Read chapter 5', userId: 'u1', createdAt: Date.now(), completed: true, dueDate: '2023-10-26' },
+    { id: '3', title: 'Prepare for exam', userId: 'u1', createdAt: Date.now(), completed: false, dueDate: '2023-10-27' },
 ];
 
-// 💡 FIX 2: Create the Context object first (since useTasks relies on it)
 export const TaskContext = createContext<TaskContextType>({
     tasks: initialTasks,
     tasksDone: 0,
-    toggleTaskCompletion: () => {}, // Default empty functions
+    addTask: () => {},
+    toggleTaskCompletion: () => {},
     deleteTask: () => {},
-    onEdit: () => {}, // <-- ADDED: Default empty function for onEdit
+    onEdit: () => {},
 });
 
-// 💡 FIX 3 (Implicit): Corrected the order. Exporting useTasks at the end is standard.
-export const useTasks = () => useContext(TaskContext); 
-
-
+// 1. The Provider component manages the state and logic
 export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [tasks, setTasks] = useState<Task[]>(initialTasks);
-    
-    // --- Task Manipulation Functions ---
-    
+
+    const addTask = (newTask: Task) => {
+        setTasks(prevTasks => [...prevTasks, newTask]);
+    };
+
     const toggleTaskCompletion = (taskToToggle: Task, isCompleted: boolean) => {
         setTasks(prevTasks =>
             prevTasks.map(t =>
@@ -59,21 +59,21 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setTasks(prevTasks => prevTasks.filter(t => t.id !== taskToDelete.id));
     };
 
-    // 💡 ADDITION: Placeholder for the actual onEdit function (to satisfy the interface)
     const onEdit = (task: Task) => {
-        console.log(`Placeholder: Navigate to edit screen for task ID: ${task.id}`);
-        alert(`Editing task: ${task.title}`); 
+        console.log(`Placeholder: Editing task ID: ${task.id}`);
+        alert(`Editing task: ${task.title}`);
     };
 
-    // Calculate tasksDone based on current state
+    // 2. CRITICAL: CALCULATES THE COUNT FOR PROFILE.TSX
     const tasksDone = tasks.filter(task => task.completed).length;
 
     const contextValue: TaskContextType = {
         tasks,
         tasksDone,
+        addTask,
         toggleTaskCompletion,
         deleteTask,
-        onEdit, // <-- ADDED: Include the onEdit function in the context value
+        onEdit, 
     };
 
     return (
@@ -82,3 +82,6 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         </TaskContext.Provider>
     );
 };
+
+// 3. Custom hook for easy consumption by components
+export const useTasks = () => useContext(TaskContext);

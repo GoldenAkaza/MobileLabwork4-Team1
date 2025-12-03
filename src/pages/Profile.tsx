@@ -7,25 +7,25 @@ import {
     IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonThumbnail,
     IonTitle,
     IonToolbar,
-    // New imports
     IonInput,
     IonSelect,
     IonSelectOption,
 } from '@ionic/react';
 import { chevronBackOutline, cameraReverseOutline, bookOutline, timeOutline } from "ionicons/icons";
 import React, { useState, useRef } from 'react'; 
+// 💡 REQUIRED IMPORT
 import { useTasks } from './TaskContext'; 
 import "./Profile.css"
 
 function Profile() {
-    // 1. Get the dynamic count of tasks done from the context
+    // 1. GET DYNAMIC TASKS DONE COUNT from the global context
     const { tasksDone } = useTasks();
 
     const initialImageUrl = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
     
     // 2. Local State for user inputs and display
     const [profileImageUrl, setProfileImageUrl] = useState(initialImageUrl); 
-    const [studyGoal, setStudyGoal] = useState<number>(10);
+    const [studyGoal, setStudyGoal] = useState<number>(10); // Linked to the Goal Box
 
     const initialCategories = ['Software Testing', 'RPA', 'React', 'DevOps'];
     const [selectedCategories, setSelectedCategories] = useState<string[]>(['Software Testing', 'RPA']);
@@ -65,7 +65,7 @@ function Profile() {
                         <div className="profile-container">
                             <IonList>
                                 
-                                {/* ----------------------- Profile Image Section ----------------------- */}
+                                {/* Profile Image Section */}
                                 <IonItem lines="none" className="profile-main-item">
                                     <IonThumbnail className="profile" slot="start">
                                         <img 
@@ -82,7 +82,6 @@ function Profile() {
                                     </IonLabel>
                                 </IonItem>
                                 
-                                {/* HIDDEN INPUT FIELD for file selection */}
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -91,7 +90,7 @@ function Profile() {
                                     onChange={handleFileChange}
                                 />
                                 
-                                {/* ----------------------- Study Preferences Section ----------------------- */}
+                                {/* Study Preferences Section */}
                                 <h2 className="section-title">Study Preferences</h2>
                                 <IonList lines="none" className="goals">
                                     <IonItem>
@@ -128,14 +127,15 @@ function Profile() {
                                     </IonItem>
                                 </IonList>
                                 
-                                {/* ----------------------- Current Progress Boxes ----------------------- */}
+                                {/* Current Progress Boxes */}
                                 <h2 className="section-title">Current Progress</h2> 
                                 <IonGrid className="ion-no-padding">
                                     <IonRow>
-                                        {/* Column 1: Tasks Done (Streak) */}
+                                        {/* Column 1: Tasks Done (The Calculator) */}
                                         <IonCol size="6" style={{ paddingRight: '8px' }}>
                                             <div className="inspiration-card mono-font">
                                                 <span className="badge">Done</span> 
+                                                {/* ✅ FIX: This now uses the dynamic count */}
                                                 <p className="insp-quote">{tasksDone}</p> 
                                                 <div className="insp-footer">Tasks Completed</div>
                                             </div>
@@ -158,9 +158,6 @@ function Profile() {
                     </IonCardContent>
                 </IonCard>
             </IonContent>
-            
-            {/* The IonFooter is intentionally removed */}
-            
         </IonPage>
     );
 }
