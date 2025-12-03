@@ -60,11 +60,9 @@ function Profile() {
             </IonHeader>
 
             <IonContent className="welcome-container">
-                <IonCard className="welcome-content">
+                <div className="welcome-content">
                     <IonCardContent>
-                        <div className="profile-container">
                             <IonList>
-                                
                                 {/* Profile Image Section */}
                                 <IonItem lines="none" className="profile-main-item">
                                     <IonThumbnail className="profile" slot="start">
@@ -154,9 +152,9 @@ function Profile() {
 
 
                             </IonList>
-                        </div>
+                    
                     </IonCardContent>
-                </IonCard>
+                </div>
             </IonContent>
         </IonPage>
     );

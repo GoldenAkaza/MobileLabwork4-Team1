@@ -1,18 +1,19 @@
-.content-background {
-  --background: linear-gradient(135deg, #8fbbfd, #333fac);
-  color: #546a9e;
-  padding-top: 0;
-}
-
 .welcome-content {
   --background: transparent;
   box-shadow: none;
-  max-width: 340px;
-  margin: 0 auto;
   text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 10px 0;
+  margin: 20px 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
-
+.welcome-container {
+  display: flex;
+  color: rgb(255, 255, 255);
+  --background: linear-gradient(135deg, #8fbbfd, #333fac);
+}
 
 ion-toolbar {
   --align-items: center;
@@ -158,10 +159,6 @@ ion-item {
     margin-top: 5px;
 }
 
-body.dark .content-background {
-  --background: linear-gradient(135deg, #1c2b55, #0e142f);
-  color: #e8edff;
-}
 
 body.dark ion-header,
 body.dark ion-toolbar {
