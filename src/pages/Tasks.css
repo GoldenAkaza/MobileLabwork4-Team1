@@ -69,7 +69,7 @@ ion-toolbar ion-button {
   border-radius: 8px;
   background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
   padding: 10px;
-  height: 170px;
+  height: 160px;
   display: flex;
   margin: 10px;
   margin-bottom: -60px;
@@ -88,18 +88,18 @@ ion-toolbar ion-button {
  
 .insp-quote {
   color: #546a9e;
-  font-size: 0.75em;
+  font-size: 0.75rem !important;
   text-align: center;
   font-style: italic;
   margin: 0;
   padding: 0 5px;
+  padding-top: 5px;
 }
  
 .insp-footer {
   color: #546a9e;
   font-size: 0.75em;
   border-top: 1px solid rgba(0,0,0,0.1);
-  padding-top: 5px;
   margin-top: 5px;
 }
 

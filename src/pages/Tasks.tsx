@@ -18,19 +18,13 @@ import {
   IonText,
   IonItem,
   IonButtons,
-  IonFooter,
-  IonTabBar,
-  IonTabButton,
  
 } from '@ionic/react';
 import {
-  personOutline,
-  homeOutline,
-  calendarOutline,
-  settingsOutline,
   checkmarkCircle,
   chevronBackOutline,
-  personCircle
+  personCircle,
+  trashOutline
 } from 'ionicons/icons';
 import './Tasks.css';
  
@@ -68,6 +62,10 @@ const Tasks: React.FC = () => {
     setTasks(tasks.map(task =>
       task.id === id ? { ...task, completed: !task.completed } : task
     ));
+  };
+
+  const deleteTask = (id: number) => {
+    setTasks(tasks.filter(task => task.id !== id));
   };
  
   const handleCancel = () => {
@@ -155,6 +153,15 @@ const Tasks: React.FC = () => {
                   <div className="task-text">{task.text}</div>
                   <div className="task-due">Due: {task.due}</div>
                 </div>
+
+                <IonButton 
+                  slot="end" 
+                  fill="clear" 
+                  color="danger" 
+                  onClick={() => deleteTask(task.id)}
+                  >
+                  <IonIcon icon={trashOutline} />
+                </IonButton>
               </IonItem>
             ))}
            
