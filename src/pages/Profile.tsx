@@ -51,8 +51,8 @@ function Profile() {
             </IonHeader>
 
             {/* 🛑 Centering Container */}
-            <IonContent className="welcome-container">
-                <div className="welcome-content">
+            <IonContent className="profile-container">
+                <div className="profile-content">
                     
                     <IonList>
                         

@@ -1,5 +1,5 @@
 /* --- Global Background and Centering --- */
-.welcome-container {
+.profile-container {
     /* Match the gradient background */
     --background: linear-gradient(135deg, #8fbbfd, #333fac);
     color: #546a9e;
@@ -10,7 +10,7 @@
     align-items: center; 
 }
 
-.welcome-content {
+.profile-content {
     /* Set background to white, matching Tasks view */
     background: rgb(255, 255, 255); 
     --background: rgb(255, 255, 255);
