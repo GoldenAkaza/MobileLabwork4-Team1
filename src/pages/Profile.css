@@ -1,81 +1,109 @@
-.welcome-content {
-  --background: transparent;
-  box-shadow: none;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 18px;
-  padding: 10px 0;
-  margin: 20px 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-}
-
+/* --- Global Background and Centering --- */
 .welcome-container {
-  display: flex;
-  color: rgb(255, 255, 255);
-  --background: linear-gradient(135deg, #8fbbfd, #333fac);
+    /* Match the gradient background */
+    --background: linear-gradient(135deg, #8fbbfd, #333fac);
+    color: #546a9e;
+    padding-top: 0;
+    /* Center the card horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
+.welcome-content {
+    /* Set background to white, matching Tasks view */
+    background: rgb(255, 255, 255); 
+    --background: rgb(255, 255, 255);
+    
+    /* Ensure border radius matches the look (10px from tasks.css) */
+    border-radius: 10px;
+    
+    /* Centering and sizing the card */
+    max-width: 340px; 
+    margin: 20px auto; 
+    
+    /* Add padding/margin to prevent cut-off at the bottom */
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    padding: 16px; 
+    padding-bottom: 50px; /* Extra padding for bottom clearance */
+    
+    text-align: center;
+}
+
+/* --- Header & Toolbar --- */
 ion-toolbar {
-  --align-items: center;
+    --background: transparent;
+    --border-width: 0;
+    --box-shadow: none;
 }
-
 ion-title {
-  font-weight: 800;
-  color: #93b3fd;
-  font-size: 1.5rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  display: flex;
-  align-items: center;
-  height: 100%;
+    font-weight: 800;
+    color: #93b3fd;
+    font-size: 1.5rem;
 }
-
 ion-buttons ion-icon {
     color: #93b3fd;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
-ion-toolbar ion-button {
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
-}
-
+/* --- Typography & Labels --- */
 ion-label,
 ion-label p,
-.insp-footer,
+.tasks-unit-label, 
+.insp-footer, 
 .badge,
-.change-pic-container span,
-ion-tab-button ion-label {
+.change-pic-container span {
     color: #546a9e !important;
-    font-size: 0.75rem !important;
+    font-size: 0.75rem !important; 
+    font-weight: normal; 
 }
 
-ion-item ion-label h2 {
-    color: #93b3fd;
-    font-weight: 800 !important;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+.username-label {
+    color: #93b3fd !important; /* Primary color */
+    font-size: 1.2rem !important; 
+    font-weight: 800 !important; /* Bold */
+    margin: 0;
     padding: 0;
     line-height: 1.2;
 }
-ion-item ion-label {
-    padding-top: 0;
-    padding-bottom: 0;
-}
 
-.profile-main-item {
-    --margin-bottom: 40px;
-}
 
+/* Section Headings */
 .section-title {
-    color: #93b3fd;
+    color: #93b3fd; /* Match header color */
     font-weight: bold;
-    font-size: 1.5rem;
-    margin: 40px 0 30px 10px;
+    font-size: 1.2rem;
+    margin: 20px 0 15px 0; /* Centered spacing inside the card */
+    text-align: left;
+}
+
+/* --- Lists and Items --- */
+ion-list {
+    --background: transparent;
+    padding: 0; 
+    margin: 0;
+}
+ion-item {
+    --background: transparent;
+    color: #546a9e;
+    --border-width: 0 0 0.55px 0; 
+    --border-color: #f1f1f1;
+    --padding-start: 0; 
+    --padding-end: 0;
+}
+ion-item:last-of-type {
+    --border-width: 0;
+}
+/* Ensure main profile item border is clean */
+.profile-main-item {
+     --border-width: 0 !important;
+}
+
+/* --- Profile Picture & Info --- */
+.profile {
+    width: 60px;
+    height: 60px;
+    --border-radius: 50%;
 }
 .change-pic-container {
     display: flex;
@@ -83,108 +111,60 @@ ion-item ion-label {
     gap: 5px;
     color: #546a9e;
     margin-top: 5px;
+    cursor: pointer;
 }
-.change-pic-container ion-icon {
-    color: #546a9e;
+
+/* --- Progress Cards (Inspiration Cards) --- */
+ion-grid {
+    padding: 10px 0; /* Add top/bottom padding to the grid */
+}
+.inspiration-card {
+    /* Match the gradient card background from tasks.css */
+    background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
+    --background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
 .insp-quote {
     color: #546a9e !important;
-    font-size: 3rem !important;
+    font-size: 2.5rem !important; 
     text-align: center;
-    margin: 0;
-    padding: 0 5px;
-}
-
-ion-item ion-icon {
-    color: #546a9e;
-}
-
-.profile {
-    width: 70px;
-    height: 70px;
-    --border-radius: 50%;
-    overflow: hidden;
-}
-.profile img {
-    object-fit: cover;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-}
-
-ion-list, .inspiration-card {
-    --background: rgba(255, 255, 255, 0.9);
-    box-shadow: none;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-.goals {
-    --background: transparent;
-    margin-bottom: 15px !important;;
-}
-
-ion-item {
-    --background: transparent;
-}
-
-.underline-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.3);
-    margin-top: 5px;
-}
-
-.inspiration-card {
-    border-radius: 8px;
-    padding: 10px;
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: visible !important;
-}
-.badge {
-    background-color: rgba(0,0,0,0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-    align-self: flex-start;
-    margin-bottom: 5px;
+    margin: 5px 0;
 }
 
 .insp-footer {
+    color: #546a9e !important; 
+    font-size: 0.75rem !important;
     border-top: 1px solid rgba(0,0,0,0.1);
     padding-top: 5px;
     margin-top: 5px;
 }
 
-
-body.dark ion-header,
-body.dark ion-toolbar {
-  --background: transparent;
+/* --- Dark Mode Styles --- */
+body.dark .welcome-container {
+    --background: linear-gradient(135deg, #1a2550, #0e142f);
 }
-
-body.dark ion-title {
-  color: #b6c7ff;
+body.dark .welcome-content {
+    background: #020b1f !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
-
+body.dark ion-item {
+    --border-color: #1e2a4d !important;
+    color: #c9d6ff;
+}
+body.dark .inspiration-card {
+    background: linear-gradient(135deg, #1f2a44, #121729);
+    --background: linear-gradient(135deg, #1f2a44, #121729);
+}
 body.dark ion-label,
-body.dark ion-label p,
 body.dark .insp-footer,
 body.dark .badge {
-  color: #c9d6ff !important;
+    color: #c9d6ff !important;
 }
-
-body.dark ion-list,
-body.dark .inspiration-card {
-  --background: var(--card-bg-dark);
-}
-
-body.dark .profile-main-item {
-  color: #d7e0ff;
-}
-
-body.dark .inspiration-card {
-  background: var(--card-bg-dark-strong);
+body.dark .insp-quote {
+    color: #c9d6ff !important; 
 }
