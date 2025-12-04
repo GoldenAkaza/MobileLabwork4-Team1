@@ -71,7 +71,7 @@ function Profile() {
       {/* 🛑 Centering Container */}
       <IonContent className="profile-container">
         <div className="profile-content">
-          <IonList>
+          <IonList inset>
             {/* === 1. User Info Section === */}
             <IonItem lines="none" className="profile-main-item">
               <IonThumbnail className="profile" slot="start">

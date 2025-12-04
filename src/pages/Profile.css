@@ -3,7 +3,6 @@
   /* Match the gradient background */
   --background: linear-gradient(135deg, #8fbbfd, #333fac);
   color: #546a9e;
-  padding-top: 0;
   /* Center the card horizontally and vertically */
   display: flex;
   justify-content: center;
@@ -16,15 +15,13 @@
   --background: rgb(255, 255, 255);
 
   /* Ensure border radius matches the look (10px from tasks.css) */
-  border-radius: 10px;
+  border-radius: 18px;
 
   /* Centering and sizing the card */
-  margin: 20px auto;
-
+  margin: 20px 12px;
+  padding: 10px 10px;
   /* Add padding/margin to prevent cut-off at the bottom */
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-  padding: 16px;
-  padding-bottom: 50px; /* Extra padding for bottom clearance */
 
   text-align: center;
 }
