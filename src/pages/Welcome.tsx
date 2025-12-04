@@ -7,6 +7,8 @@ import {
   IonToolbar,
   IonButtons,
   IonTitle,
+  IonList,
+  IonItem,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import "./Welcome.css";
@@ -15,7 +17,7 @@ const Welcome: React.FC = () => {
   const history = useHistory();
 
   const handleStart = () => {
-    history.push("/Home");
+    history.push("/Tasks");
   };
 
   return (
@@ -30,17 +32,25 @@ const Welcome: React.FC = () => {
       </IonHeader>
 
       <IonContent className="welcome-container">
-        <div className="welcome-content">
-          <h3>My study planner</h3>
-          <p>
-            This simple app helps you organize your daily tasks easily. Add new
-            tasks, mark them as done, and stay productive! For each completed
-            task you'll receive an inspirational quote.
-          </p>
+        <div className="welcome-card">
+          <IonList inset>
+            <IonItem lines="none">
+              <h3 className="welcome-title">My study planner</h3>
+            </IonItem>
+            <IonItem lines="none">
+              <p className="welcome-description">
+                This simple app helps you organize your daily tasks easily. Add
+                new tasks, mark them as done, and stay productive! For each
+                completed task you'll receive an inspirational quote.
+              </p>
+            </IonItem>
 
-          <IonButton className="start-button" onClick={handleStart}>
-            Start
-          </IonButton>
+            <IonItem lines="none">
+              <IonButton className="start-button" onClick={handleStart}>
+                Start
+              </IonButton>
+            </IonItem>
+          </IonList>
         </div>
       </IonContent>
     </IonPage>

@@ -7,12 +7,22 @@
   color: rgb(255, 255, 255);
 }
 
-.welcome-content {
-  max-width: 340px;
-  margin: 0 auto;
-  margin-top: 100px;
-  padding: 20px;
-  text-align: center;
+.welcome-card {
+  background: rgb(255, 255, 255);
+  border-radius: 18px;
+  padding: 10px 0;
+  margin: 20px 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.welcome-card ion-list {
+  --background: transparent !important;
+  --ion-item-background: transparent !important;
+  background: transparent !important;
+}
+
+.welcome-card ion-item {
+  --border-width: 0 0 0 0;
 }
 
 ion-toolbar.custom-header {
@@ -27,13 +37,13 @@ ion-toolbar.custom-header {
   font-size: 1.5rem;
 }
 
-.welcome-content h3 {
+.welcome-title {
   color: #482468;
   margin-bottom: 1rem;
   font-weight: 400;
 }
 
-.welcome-content p {
+.welcome-description {
   font-size: 0.75rem;
   line-height: 1.6;
   color: #546a9e;
@@ -49,8 +59,6 @@ ion-toolbar.custom-header {
   font-size: 1rem;
   text-transform: none;
   transition: all 0.3s ease;
-  width: 180px;
-  margin: 0 auto;
 }
 
 .start-button:hover {
