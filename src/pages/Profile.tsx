@@ -17,6 +17,7 @@ import {
   IonInput,
   IonSelect,
   IonSelectOption,
+  IonNote,
 } from "@ionic/react";
 import {
   chevronBackOutline,
@@ -26,11 +27,15 @@ import {
 } from "ionicons/icons";
 import React, { useState, useRef } from "react";
 import { useTasks } from "./TaskContext";
+import { useAuth } from "../auth/AuthContext";
 import "./Profile.css";
 
 function Profile() {
   // Dynamic Context Data (Needed for the "Done" counter)
   const { tasksDone } = useTasks();
+
+  const { user } = useAuth(); 
+  const displayEmail = user?.email ?? "your.email@example.com";
 
   // Local State
   const initialImageUrl =
@@ -78,7 +83,9 @@ function Profile() {
                 <img alt="profile" src={profileImageUrl} />
               </IonThumbnail>
               <IonLabel>
-                <p className="username-label">User Name</p>
+                <p className="username-label"><IonNote slot="end" className="header-email-note">
+                        {displayEmail}
+                    </IonNote></p>
                 <div
                   className="change-pic-container"
                   onClick={triggerFileInput}
