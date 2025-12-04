@@ -142,7 +142,11 @@ const ChangePassword: React.FC = () => {
           </IonText>
         )}
 
-        <IonButton expand="block" onClick={handleChangePassword} className="ion-margin-top">
+        <IonButton
+          expand="block"
+          onClick={handleChangePassword}
+          className="ion-margin-top"
+        >
           Update Password
         </IonButton>
 

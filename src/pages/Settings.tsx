@@ -32,16 +32,23 @@ import {
 import { Preferences } from "@capacitor/preferences";
 import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
-import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { useAuth } from "../auth/AuthContext";
-import './Settings.css';
+import "./Settings.css";
 
 type SettingsState = {
   push: boolean;
   dailyReminders: boolean;
   soundEffects: boolean;
   completionSound: boolean;
-  darkMode: boolean,
+  darkMode: boolean;
 };
 
 const DEFAULTS: SettingsState = {
@@ -52,74 +59,72 @@ const DEFAULTS: SettingsState = {
   darkMode: false,
 };
 
-
-
 export default function Settings() {
   const { user } = useAuth();
-    const [s, setS] = useState<SettingsState>(DEFAULTS);
-    const [settingsLoaded, setSettingsLoaded] = useState(false);
-    const [confirmClear, setConfirmClear] = useState(false);
-    const [busy, setBusy] = useState(false);
-    const prefKey = user
-    ? `studyplanner.settings.${user.uid}`: "studyplanner.settings.guest";
+  const [s, setS] = useState<SettingsState>(DEFAULTS);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
+  const [confirmClear, setConfirmClear] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const prefKey = user
+    ? `studyplanner.settings.${user.uid}`
+    : "studyplanner.settings.guest";
 
+  // Load saved settings ONCE
+  useEffect(() => {
+    if (!user) return; // wait until we know who is logged in
+    (async () => {
+      const { value } = await Preferences.get({ key: prefKey });
 
-    // Load saved settings ONCE
-    useEffect(() => {
-      
-        if (!user) return; // wait until we know who is logged in
-        (async () => {
-            const { value } = await Preferences.get({ key: prefKey });
+      if (value) {
+        // Use saved values exactly as the user left them
+        setS(JSON.parse(value) as SettingsState);
+      } else {
+        // First run — store defaults
+        await Preferences.set({
+          key: prefKey,
+          value: JSON.stringify(DEFAULTS),
+        });
+        setS(DEFAULTS);
+      }
+      setSettingsLoaded(true);
+    })();
+  }, [user, prefKey]);
 
-            if (value) {
-            // Use saved values exactly as the user left them
-            setS(JSON.parse(value) as SettingsState);
-            } else {
-            // First run — store defaults
-            await Preferences.set({
-                key: prefKey,
-                value: JSON.stringify(DEFAULTS),
-            });
-            setS(DEFAULTS);
-            }
-            setSettingsLoaded(true);
-        })();
-    }, [user, prefKey]);
+  // Save whenever settings change
+  useEffect(() => {
+    if (!settingsLoaded) return; // avoid overwriting before initial load
+    Preferences.set({ key: prefKey, value: JSON.stringify(s) });
+  }, [s, settingsLoaded, prefKey, user]);
 
+  const toggleTheme = () => {
+    setS((prev) => ({ ...prev, darkMode: !prev.darkMode }));
+  };
 
+  const themeLabel = s.darkMode ? "Dark" : "Light";
 
-    // Save whenever settings change
-    useEffect(() => {
-        if (!settingsLoaded) return; // avoid overwriting before initial load
-        Preferences.set({ key: prefKey, value: JSON.stringify(s) });
-    }, [s, settingsLoaded, prefKey, user]);
+  useEffect(() => {
+    document.body.classList.toggle("dark", s.darkMode);
+  }, [s.darkMode]);
 
-    const toggleTheme = () => {
-        setS((prev) => ({ ...prev, darkMode: !prev.darkMode }));
+  const onToggle =
+    (key: keyof SettingsState) => (ev: CustomEvent<{ checked: boolean }>) => {
+      setS((prev) => ({ ...prev, [key]: ev.detail.checked }));
     };
 
-    const themeLabel = s.darkMode ? "Dark" : "Light";
-
-    useEffect(() => {
-      document.body.classList.toggle("dark", s.darkMode);
-    }, [s.darkMode]);
-
-
-    const onToggle =
-    (key: keyof SettingsState) =>
-    (ev: CustomEvent<{ checked: boolean }>) => {
-        setS((prev) => ({ ...prev, [key]: ev.detail.checked }));
-    };
-
-    // Clear All Data
+  // Clear All Data
   const handleClearAllData = async () => {
     if (!user) return;
     setBusy(true);
     try {
-      const qTasks = query(collection(db, "tasks"), where("userId", "==", user.uid));
+      const qTasks = query(
+        collection(db, "tasks"),
+        where("userId", "==", user.uid),
+      );
       const snap = await getDocs(qTasks);
       // delete in parallel (for small personal datasets this is fine)
-      await Promise.all(snap.docs.map((d) => deleteDoc(doc(db, "tasks", d.id))));
+      await Promise.all(
+        snap.docs.map((d) => deleteDoc(doc(db, "tasks", d.id))),
+      );
       alert("All your tasks were deleted.");
     } catch (e) {
       console.error(e);
@@ -141,7 +146,6 @@ export default function Settings() {
       </IonHeader>
 
       <IonContent className="settings-container">
-
         {/* Account */}
         <div className="settings-card">
           <IonList inset>
@@ -156,16 +160,23 @@ export default function Settings() {
               <IonLabel>
                 <p>Email</p>
               </IonLabel>
-              <IonNote slot="end">{user?.email ?? "your.email@example.com"}</IonNote>
+              <IonNote slot="end">
+                {user?.email ?? "your.email@example.com"}
+              </IonNote>
             </IonItem>
 
             <IonItem button routerLink="/change-password">
-            <IonIcon slot="start" icon={lockClosedOutline} />
-            <IonLabel>Change Password</IonLabel>
-            <IonNote slot="end">…</IonNote>
+              <IonIcon slot="start" icon={lockClosedOutline} />
+              <IonLabel>Change Password</IonLabel>
+              <IonNote slot="end">…</IonNote>
             </IonItem>
 
-            <IonItem button detail={false} onClick={() => signOut(auth)} lines="none">
+            <IonItem
+              button
+              detail={false}
+              onClick={() => signOut(auth)}
+              lines="none"
+            >
               <IonIcon slot="start" icon={logOutOutline} color="danger" />
               <IonLabel color="danger">Log Out</IonLabel>
             </IonItem>
@@ -174,7 +185,7 @@ export default function Settings() {
 
         {/* Notifications */}
         <div className="settings-card">
-          <IonList  inset>
+          <IonList inset>
             <IonItem lines="full">
               <IonLabel>
                 <h2>Notifications</h2>
@@ -184,10 +195,7 @@ export default function Settings() {
             <IonItem>
               <IonIcon slot="start" icon={notificationsOutline} />
               <IonLabel>Push Notifications</IonLabel>
-              <IonToggle
-                checked={s.push}
-                onIonChange={onToggle("push")}
-              />
+              <IonToggle checked={s.push} onIonChange={onToggle("push")} />
             </IonItem>
 
             <IonItem>
@@ -202,68 +210,72 @@ export default function Settings() {
         </div>
 
         {/* Appearance & Sound */}
-          <div className="settings-card">
-            <IonList inset>
-              <IonItem lines="full">
-                <IonLabel>
-                  <h2>Appearance & Sound</h2>
-                </IonLabel>
-              </IonItem>
+        <div className="settings-card">
+          <IonList inset>
+            <IonItem lines="full">
+              <IonLabel>
+                <h2>Appearance & Sound</h2>
+              </IonLabel>
+            </IonItem>
 
-              <IonItem>
-                <IonIcon slot="start" icon={sunnyOutline} />
-                <IonLabel>Theme</IonLabel>
-                <IonButton slot="end" size="small" onClick={toggleTheme}>
-                    {themeLabel}
-                </IonButton>
-              </IonItem>
+            <IonItem>
+              <IonIcon slot="start" icon={sunnyOutline} />
+              <IonLabel>Theme</IonLabel>
+              <IonButton slot="end" size="small" onClick={toggleTheme}>
+                {themeLabel}
+              </IonButton>
+            </IonItem>
 
-              <IonItem>
-                <IonIcon slot="start" icon={musicalNotesOutline} />
-                <IonLabel>Sound Effects</IonLabel>
-                <IonToggle
-                  checked={s.soundEffects}
-                  onIonChange={onToggle("soundEffects")}
-                />
-              </IonItem>
+            <IonItem>
+              <IonIcon slot="start" icon={musicalNotesOutline} />
+              <IonLabel>Sound Effects</IonLabel>
+              <IonToggle
+                checked={s.soundEffects}
+                onIonChange={onToggle("soundEffects")}
+              />
+            </IonItem>
 
-              <IonItem>
-                <IonIcon slot="start" icon={volumeHighOutline} />
-                <IonLabel>Task Completion Sound</IonLabel>
-                <IonToggle
-                  checked={s.completionSound}
-                  onIonChange={onToggle("completionSound")}
-                />
-              </IonItem>
-            </IonList>
-          </div>
+            <IonItem>
+              <IonIcon slot="start" icon={volumeHighOutline} />
+              <IonLabel>Task Completion Sound</IonLabel>
+              <IonToggle
+                checked={s.completionSound}
+                onIonChange={onToggle("completionSound")}
+              />
+            </IonItem>
+          </IonList>
+        </div>
 
-          {/* Data */}
-          <div className="settings-card">
-            <IonList inset>
-              <IonItem lines="full">
-                <IonLabel>
-                  <h2>Data</h2>
-                </IonLabel>
-              </IonItem>
+        {/* Data */}
+        <div className="settings-card">
+          <IonList inset>
+            <IonItem lines="full">
+              <IonLabel>
+                <h2>Data</h2>
+              </IonLabel>
+            </IonItem>
 
-              <IonItem
-                button
-                detail={false}
-                onClick={() => setConfirmClear(true)}
-              >
-                <IonIcon slot="start" icon={trashOutline} color="danger" />
-                <IonLabel color="danger">Clear All Data</IonLabel>
-              </IonItem>
-            </IonList>
-          </div>
+            <IonItem
+              button
+              detail={false}
+              onClick={() => setConfirmClear(true)}
+            >
+              <IonIcon slot="start" icon={trashOutline} color="danger" />
+              <IonLabel color="danger">Clear All Data</IonLabel>
+            </IonItem>
+          </IonList>
+        </div>
 
         <IonAlert
           isOpen={confirmClear}
           header="Clear All Data?"
           message="This will permanently delete all your tasks. This cannot be undone."
           buttons={[
-            { text: "Cancel", role: "cancel", handler: () => setConfirmClear(false) },
+            {
+              text: "Cancel",
+              role: "cancel",
+              handler: () => setConfirmClear(false),
+            },
             {
               text: "Delete",
               role: "destructive",

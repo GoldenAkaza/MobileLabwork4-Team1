@@ -1,9 +1,28 @@
 import {
-  IonBackButton, IonButton, IonButtons, IonContent, IonDatetime, IonHeader,
-  IonInput, IonItem, IonLabel, IonList, IonPage, IonTextarea, IonTitle, IonToolbar
+  IonBackButton,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonDatetime,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonTextarea,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
-import { addDoc, collection, doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../auth/AuthContext";
 import { useHistory, useLocation } from "react-router-dom";
@@ -37,7 +56,7 @@ export default function AddEditTask() {
       await setDoc(
         doc(db, "tasks", taskId),
         { title, notes, dueDate: dueDate || null },
-        { merge: true }
+        { merge: true },
       );
     } else {
       await addDoc(collection(db, "tasks"), {
@@ -56,7 +75,9 @@ export default function AddEditTask() {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start"><IonBackButton defaultHref="/home" /></IonButtons>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/home" />
+          </IonButtons>
           <IonTitle>{taskId ? "Edit Task" : "Add Task"}</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={save}>Save</IonButton>
@@ -67,18 +88,24 @@ export default function AddEditTask() {
         <IonList>
           <IonItem>
             <IonLabel position="stacked">Title</IonLabel>
-            <IonInput value={title} onIonChange={e => setTitle(e.detail.value!)} />
+            <IonInput
+              value={title}
+              onIonChange={(e) => setTitle(e.detail.value!)}
+            />
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Notes</IonLabel>
-            <IonTextarea value={notes} onIonChange={e => setNotes(e.detail.value!)} />
+            <IonTextarea
+              value={notes}
+              onIonChange={(e) => setNotes(e.detail.value!)}
+            />
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Due Date</IonLabel>
             <IonDatetime
               presentation="date"
               value={dueDate}
-              onIonChange={e => setDueDate(e.detail.value as string)}
+              onIonChange={(e) => setDueDate(e.detail.value as string)}
             />
           </IonItem>
         </IonList>

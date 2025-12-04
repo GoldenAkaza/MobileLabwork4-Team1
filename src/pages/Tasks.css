@@ -3,7 +3,7 @@
   color: rgb(255, 255, 255);
   padding-top: 0;
 }
- 
+
 .welcome-content {
   background: rgb(255, 255, 255);
   box-shadow: none;
@@ -29,19 +29,19 @@ ion-toolbar.custom-header {
   font-weight: bold;
 }
 
- 
 /* ? */
-ion-header, ion-toolbar {
-    --background-color: white;
-    --border-width: 0;
-    --box-shadow: none;
+ion-header,
+ion-toolbar {
+  --background-color: white;
+  --border-width: 0;
+  --box-shadow: none;
 }
- 
+
 /* ? */
 ion-toolbar {
   --align-items: center;
 }
- 
+
 ion-title {
   font-weight: 800;
   color: #93b3fd;
@@ -52,12 +52,12 @@ ion-title {
   align-items: center;
   height: 100%;
 }
- 
+
 ion-buttons ion-icon {
-    color: #93b3fd;
-    font-size: 1.5rem;
+  color: #93b3fd;
+  font-size: 1.5rem;
 }
- 
+
 ion-toolbar ion-button {
   --padding-start: 0;
   --padding-end: 0;
@@ -78,14 +78,14 @@ ion-toolbar ion-button {
 }
 
 .badge {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.75em;
   align-self: flex-start;
   margin-bottom: 5px;
 }
- 
+
 .insp-quote {
   color: #546a9e;
   font-size: 0.75rem !important;
@@ -95,11 +95,11 @@ ion-toolbar ion-button {
   padding: 0 5px;
   padding-top: 5px;
 }
- 
+
 .insp-footer {
   color: #546a9e;
   font-size: 0.75em;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 5px;
 }
 
@@ -108,7 +108,7 @@ ion-toolbar ion-button {
   border-radius: 12px;
   padding: 10px;
   margin: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   color: #546a9e;
 }
 
@@ -133,9 +133,9 @@ ion-datetime {
 }
 
 .btn-round {
-    color: #546a9e;
-    margin: 10px;
-    --background: white;
+  color: #546a9e;
+  margin: 10px;
+  --background: white;
   --color: #10132e;
   --border-radius: 10px;
   font-weight: 600;
@@ -147,9 +147,9 @@ ion-datetime {
 }
 
 .btn-round2 {
-    color: rgb(255, 255, 255);
-    margin: 10px;
-    --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
+  color: rgb(255, 255, 255);
+  margin: 10px;
+  --background: linear-gradient(135deg, #d0d6fa, #4e5bcc);
   --color: #10132e;
   --border-radius: 10px;
   font-weight: 600;
@@ -193,7 +193,7 @@ ion-checkbox {
   --border-radius: 50%;
   margin-right: 15px;
   --checkmark-color: #ffffff;
-   --checkbox-background: #fdfdfd;
+  --checkbox-background: #fdfdfd;
   --border-color: #d0e7fd;
 }
 
@@ -313,7 +313,6 @@ body.dark .inspiration-card {
   color: #d7e0ff;
 }
 
-
 body.dark .custom-input-container {
   background: var(--card-bg-dark);
   border-color: #334169;
@@ -331,5 +330,3 @@ body.dark ion-tab-bar {
   border-top: 1px solid #020b1f;
   padding-bottom: 5px;
 }
-
-

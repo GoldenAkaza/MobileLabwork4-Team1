@@ -20,7 +20,6 @@ export type Task = {
   createdAt: number; // ms epoch
 };
 
-
 type Props = {
   task: Task;
   onToggle: (t: Task, next: boolean) => void;
@@ -40,15 +39,18 @@ const TaskItem: React.FC<Props> = ({ task, onToggle, onEdit, onDelete }) => {
         <h2>{task.title}</h2>
         {task.notes && <p>{task.notes}</p>}
         {task.dueDate && (
-          <IonNote>
-            Due {dayjs(task.dueDate).format("MMM D, YYYY")}
-          </IonNote>
+          <IonNote>Due {dayjs(task.dueDate).format("MMM D, YYYY")}</IonNote>
         )}
       </IonLabel>
       <IonButton fill="clear" onClick={() => onEdit(task)} aria-label="Edit">
         <IonIcon icon={pencil} />
       </IonButton>
-      <IonButton fill="clear" color="danger" onClick={() => onDelete(task)} aria-label="Delete">
+      <IonButton
+        fill="clear"
+        color="danger"
+        onClick={() => onDelete(task)}
+        aria-label="Delete"
+      >
         <IonIcon icon={trash} />
       </IonButton>
     </IonItem>

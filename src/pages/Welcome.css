@@ -38,7 +38,7 @@ ion-toolbar.custom-header {
   line-height: 1.6;
   color: #546a9e;
   margin: 0 auto 2rem;
-  max-width: 320px;  
+  max-width: 320px;
 }
 
 .start-button {
@@ -54,7 +54,7 @@ ion-toolbar.custom-header {
 }
 
 .start-button:hover {
-  --background:linear-gradient(135deg, #5e6ce6, #482468);
+  --background: linear-gradient(135deg, #5e6ce6, #482468);
   --color: #fcfcfd;
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(85, 99, 222, 0.4);
@@ -67,7 +67,7 @@ body.dark .welcome-container {
 
 /* gives the center card its own surface in dark mode */
 body.dark .welcome-content {
-  background: #020b1f !important; ;
+  background: #020b1f !important;
   border-radius: 16px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
 }
@@ -90,4 +90,3 @@ body.dark .start-button {
   --background: linear-gradient(135deg, #3c4fa8, #1d275b);
   --color: #ffffff;
 }
-

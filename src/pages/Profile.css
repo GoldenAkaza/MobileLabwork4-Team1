@@ -1,170 +1,168 @@
 /* --- Global Background and Centering --- */
 .profile-container {
-    /* Match the gradient background */
-    --background: linear-gradient(135deg, #8fbbfd, #333fac);
-    color: #546a9e;
-    padding-top: 0;
-    /* Center the card horizontally and vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+  /* Match the gradient background */
+  --background: linear-gradient(135deg, #8fbbfd, #333fac);
+  color: #546a9e;
+  padding-top: 0;
+  /* Center the card horizontally and vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-content {
-    /* Set background to white, matching Tasks view */
-    background: rgb(255, 255, 255); 
-    --background: rgb(255, 255, 255);
-    
-    /* Ensure border radius matches the look (10px from tasks.css) */
-    border-radius: 10px;
-    
-    /* Centering and sizing the card */
-    max-width: 340px; 
-    margin: 20px auto; 
-    
-    /* Add padding/margin to prevent cut-off at the bottom */
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-    padding: 16px; 
-    padding-bottom: 50px; /* Extra padding for bottom clearance */
-    
-    text-align: center;
+  /* Set background to white, matching Tasks view */
+  background: rgb(255, 255, 255);
+  --background: rgb(255, 255, 255);
+
+  /* Ensure border radius matches the look (10px from tasks.css) */
+  border-radius: 10px;
+
+  /* Centering and sizing the card */
+  margin: 20px auto;
+
+  /* Add padding/margin to prevent cut-off at the bottom */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  padding-bottom: 50px; /* Extra padding for bottom clearance */
+
+  text-align: center;
 }
 
 /* --- Header & Toolbar --- */
 ion-toolbar {
-    --background: transparent;
-    --border-width: 0;
-    --box-shadow: none;
+  --background: transparent;
+  --border-width: 0;
+  --box-shadow: none;
 }
 ion-title {
-    font-weight: 800;
-    color: #93b3fd;
-    font-size: 1.5rem;
+  font-weight: 800;
+  color: #93b3fd;
+  font-size: 1.5rem;
 }
 ion-buttons ion-icon {
-    color: #93b3fd;
-    font-size: 1.5rem;
+  color: #93b3fd;
+  font-size: 1.5rem;
 }
 
 /* --- Typography & Labels --- */
 ion-label,
 ion-label p,
-.tasks-unit-label, 
-.insp-footer, 
+.tasks-unit-label,
+.insp-footer,
 .badge,
 .change-pic-container span {
-    color: #546a9e !important;
-    font-size: 0.75rem !important; 
-    font-weight: normal; 
+  color: #546a9e !important;
+  font-size: 0.75rem !important;
+  font-weight: normal;
 }
 
 .username-label {
-    color: #93b3fd !important; /* Primary color */
-    font-size: 1.2rem !important; 
-    font-weight: 800 !important; /* Bold */
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
+  color: #93b3fd !important; /* Primary color */
+  font-size: 1.2rem !important;
+  font-weight: 800 !important; /* Bold */
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
 }
-
 
 /* Section Headings */
 .section-title {
-    color: #93b3fd; /* Match header color */
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 20px 0 15px 0; /* Centered spacing inside the card */
-    text-align: left;
+  color: #93b3fd; /* Match header color */
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 20px 0 15px 0; /* Centered spacing inside the card */
+  text-align: left;
 }
 
 /* --- Lists and Items --- */
 ion-list {
-    --background: transparent;
-    padding: 0; 
-    margin: 0;
+  --background: transparent;
+  padding: 0;
+  margin: 0;
 }
 ion-item {
-    --background: transparent;
-    color: #546a9e;
-    --border-width: 0 0 0.55px 0; 
-    --border-color: #f1f1f1;
-    --padding-start: 0; 
-    --padding-end: 0;
+  --background: transparent;
+  color: #546a9e;
+  --border-width: 0 0 0.55px 0;
+  --border-color: #f1f1f1;
+  --padding-start: 0;
+  --padding-end: 0;
 }
 ion-item:last-of-type {
-    --border-width: 0;
+  --border-width: 0;
 }
 /* Ensure main profile item border is clean */
 .profile-main-item {
-     --border-width: 0 !important;
+  --border-width: 0 !important;
 }
 
 /* --- Profile Picture & Info --- */
 .profile {
-    width: 60px;
-    height: 60px;
-    --border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  --border-radius: 50%;
 }
 .change-pic-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #546a9e;
-    margin-top: 5px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #546a9e;
+  margin-top: 5px;
+  cursor: pointer;
 }
 
 /* --- Progress Cards (Inspiration Cards) --- */
 ion-grid {
-    padding: 10px 0; /* Add top/bottom padding to the grid */
+  padding: 10px 0; /* Add top/bottom padding to the grid */
 }
 .inspiration-card {
-    /* Match the gradient card background from tasks.css */
-    background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
-    --background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
-    border-radius: 8px;
-    padding: 10px;
-    min-height: 100px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0;
+  /* Match the gradient card background from tasks.css */
+  background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
+  --background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
 }
 
 .insp-quote {
-    color: #546a9e !important;
-    font-size: 2.5rem !important; 
-    text-align: center;
-    margin: 5px 0;
+  color: #546a9e !important;
+  font-size: 2.5rem !important;
+  text-align: center;
+  margin: 5px 0;
 }
 
 .insp-footer {
-    color: #546a9e !important; 
-    font-size: 0.75rem !important;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    padding-top: 5px;
-    margin-top: 5px;
+  color: #546a9e !important;
+  font-size: 0.75rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 5px;
+  margin-top: 5px;
 }
 
 /* --- Dark Mode Styles --- */
 body.dark .welcome-container {
-    --background: linear-gradient(135deg, #1a2550, #0e142f);
+  --background: linear-gradient(135deg, #1a2550, #0e142f);
 }
 body.dark .welcome-content {
-    background: #020b1f !important;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  background: #020b1f !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 body.dark ion-item {
-    --border-color: #1e2a4d !important;
-    color: #c9d6ff;
+  --border-color: #1e2a4d !important;
+  color: #c9d6ff;
 }
 body.dark .inspiration-card {
-    background: linear-gradient(135deg, #1f2a44, #121729);
-    --background: linear-gradient(135deg, #1f2a44, #121729);
+  background: linear-gradient(135deg, #1f2a44, #121729);
+  --background: linear-gradient(135deg, #1f2a44, #121729);
 }
 body.dark ion-label,
 body.dark .insp-footer,
 body.dark .badge {
-    color: #c9d6ff !important;
+  color: #c9d6ff !important;
 }
 body.dark .insp-quote {
-    color: #c9d6ff !important; 
+  color: #c9d6ff !important;
 }

@@ -1,16 +1,25 @@
 import {
-  IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList,
-  IonPage, IonTitle, IonToolbar, IonText
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonText,
 } from "@ionic/react";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useHistory, Link } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import "./Welcome.css"
+import "./Welcome.css";
 
 export default function Register() {
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const history = useHistory();
@@ -30,22 +39,39 @@ export default function Register() {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            <div className="welcome-content"><h1>Create Account</h1></div></IonTitle>
+            <div className="welcome-content">
+              <h1>Create Account</h1>
+            </div>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
         <IonList>
           <IonItem>
             <IonLabel position="stacked">Email</IonLabel>
-            <IonInput type="email" value={email} onIonChange={e => setEmail(e.detail.value!)} />
+            <IonInput
+              type="email"
+              value={email}
+              onIonChange={(e) => setEmail(e.detail.value!)}
+            />
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Password</IonLabel>
-            <IonInput type="password" value={password} onIonChange={e => setPassword(e.detail.value!)} />
+            <IonInput
+              type="password"
+              value={password}
+              onIonChange={(e) => setPassword(e.detail.value!)}
+            />
           </IonItem>
         </IonList>
-        {error && <IonText color="danger"><p>{error}</p></IonText>}
-        <IonButton className="start-button" expand="block" onClick={register}>Sign up</IonButton>
+        {error && (
+          <IonText color="danger">
+            <p>{error}</p>
+          </IonText>
+        )}
+        <IonButton className="start-button" expand="block" onClick={register}>
+          Sign up
+        </IonButton>
         <p style={{ marginTop: 12 }}>
           Already have an account? <Link to="/login">Log in</Link>
         </p>

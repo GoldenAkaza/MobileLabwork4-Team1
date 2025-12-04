@@ -1,6 +1,17 @@
 import {
-  IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonList,
-  IonLoading, IonPage, IonTitle, IonToolbar, IonToast
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonFab,
+  IonFabButton,
+  IonHeader,
+  IonIcon,
+  IonList,
+  IonLoading,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonToast,
 } from "@ionic/react";
 import { add, logOutOutline } from "ionicons/icons";
 import { settingsOutline } from "ionicons/icons";
@@ -17,15 +28,14 @@ import {
   where,
   serverTimestamp,
   Timestamp,
-  FirestoreDataConverter
+  FirestoreDataConverter,
 } from "firebase/firestore";
 import { useAuth } from "../auth/AuthContext";
 import TaskItem, { Task } from "../components/TaskItem";
 import { signOut } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { getMotivationalQuote } from "../services/quotes";
-import "./Home.css"
-
+import "./Home.css";
 
 const taskConverter: FirestoreDataConverter<Task> = {
   toFirestore(task: Task) {
@@ -45,8 +55,8 @@ const taskConverter: FirestoreDataConverter<Task> = {
       data.createdAt instanceof Timestamp
         ? data.createdAt.toMillis()
         : typeof data.createdAt === "number"
-        ? data.createdAt
-        : Date.now();
+          ? data.createdAt
+          : Date.now();
 
     return {
       id: snapshot.id,
@@ -65,15 +75,21 @@ export default function Home() {
   const history = useHistory();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [busy, setBusy] = useState(true);
-  const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: "" });
+  const [toast, setToast] = useState<{ show: boolean; message: string }>({
+    show: false,
+    message: "",
+  });
 
-  const tasksRef = useMemo(() => collection(db, "tasks").withConverter(taskConverter), []);
+  const tasksRef = useMemo(
+    () => collection(db, "tasks").withConverter(taskConverter),
+    [],
+  );
   const q = useMemo(() => {
     if (!user) return null;
     return query(
       tasksRef,
       where("userId", "==", user.uid),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "desc"),
     );
   }, [tasksRef, user]);
 
@@ -101,20 +117,22 @@ export default function Home() {
         // Example message contains "You can create it here: https://console.firebase..."
         setToast({
           show: true,
-          message:
-            err?.message?.includes("insufficient permissions")
-              ? "😕 Can't read tasks: check Firestore rules."
-              : "⚠️ Error loading tasks. See console for details.",
+          message: err?.message?.includes("insufficient permissions")
+            ? "😕 Can't read tasks: check Firestore rules."
+            : "⚠️ Error loading tasks. See console for details.",
         });
         setBusy(false);
-      }
+      },
     );
 
     return () => unsub();
   }, [q]);
 
   const toggleComplete = async (task: Task, next: boolean) => {
-    await updateDoc(doc(db, "tasks", task.id), { completed: next, completedAt: serverTimestamp() });
+    await updateDoc(doc(db, "tasks", task.id), {
+      completed: next,
+      completedAt: serverTimestamp(),
+    });
     if (next) {
       try {
         const { q, a } = await getMotivationalQuote();
@@ -141,10 +159,12 @@ export default function Home() {
     <IonPage className="home-container">
       <IonHeader>
         <IonToolbar>
-          <IonTitle className="home-content"><h1>My Study Planner</h1></IonTitle>
+          <IonTitle className="home-content">
+            <h1>My Study Planner</h1>
+          </IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => history.push("/settings")}>
-             <IonIcon icon={settingsOutline} slot="icon-only" />
+              <IonIcon icon={settingsOutline} slot="icon-only" />
             </IonButton>
             <IonButton className="home-button" onClick={() => signOut(auth)}>
               <IonIcon icon={logOutOutline} slot="icon-only" />
@@ -154,13 +174,21 @@ export default function Home() {
       </IonHeader>
 
       <IonContent className="ion-padding">
-        {busy ? <IonLoading isOpen message="Loading tasks..." /> :
+        {busy ? (
+          <IonLoading isOpen message="Loading tasks..." />
+        ) : (
           <IonList>
-            {tasks.map(t => (
-              <TaskItem key={t.id} task={t} onToggle={toggleComplete} onEdit={editTask} onDelete={deleteTask} />
+            {tasks.map((t) => (
+              <TaskItem
+                key={t.id}
+                task={t}
+                onToggle={toggleComplete}
+                onEdit={editTask}
+                onDelete={deleteTask}
+              />
             ))}
           </IonList>
-        }
+        )}
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton onClick={addTask}>

@@ -6,19 +6,16 @@ const API_NINJAS_KEY = import.meta.env.VITE_API_NINJAS_KEY as string;
  * Fetches a random quote using API Ninjas Quotes API.
  * Docs: https://api-ninjas.com/api/quotes
  */
-export async function getMotivationalQuote(): Promise<{ q: string; a: string }> {
+export async function getMotivationalQuote(): Promise<{
+  q: string;
+  a: string;
+}> {
   try {
     const res = await axios.get("https://api.api-ninjas.com/v1/quotes", {
       headers: {
         "X-Api-Key": API_NINJAS_KEY,
       },
     });
-
-
-
-
-
-    
 
     // The API returns an array like:
     // [ { quote: "Your quote here", author: "Author Name", category: "motivational" } ]
