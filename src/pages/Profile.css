@@ -19,7 +19,7 @@
 
   /* Centering and sizing the card */
   margin: 20px 12px;
-  padding: 10px 10px;
+  padding: 10px 0px;
   /* Add padding/margin to prevent cut-off at the bottom */
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 

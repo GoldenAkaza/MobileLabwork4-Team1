@@ -86,9 +86,9 @@ const Tasks: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="content-background">
-        <div className="welcome-content">
-          <div className="welcome-section mono-font">
+      <IonContent className="tasks-container">
+        <div className="tasks-content">
+          <div className="tasks-section mono-font">
             <IonIcon icon={personCircle} size="large" color="primary" />
             <span style={{ marginLeft: "10px", fontWeight: "bold" }}>
               Welcome, User!

@@ -1,21 +1,20 @@
-.content-background {
+.tasks-container {
   --background: linear-gradient(135deg, #8fbbfd, #333fac);
   color: rgb(255, 255, 255);
-  padding-top: 0;
+  display: flex;
 }
 
-.welcome-content {
+.tasks-content {
   background: rgb(255, 255, 255);
-  box-shadow: none;
-  max-width: 340px;
-  margin: 0px auto;
-  margin-bottom: 100px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  margin: 20px 12px;
+  padding: 34px 16px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 18px;
   color: #546a9e;
 }
 
-.welcome-section {
+.tasks-section {
   display: flex;
   align-items: center;
   margin-top: 20px;
