@@ -140,10 +140,10 @@ ion-grid {
 }
 
 /* --- Dark Mode Styles --- */
-body.dark .welcome-container {
+body.dark .profile-container {
   --background: linear-gradient(135deg, #1a2550, #0e142f);
 }
-body.dark .welcome-content {
+body.dark .profile-content {
   background: #020b1f !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
