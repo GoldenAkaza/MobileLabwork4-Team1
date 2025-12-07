@@ -62,7 +62,7 @@ function Profile() {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar className="custom-header">
           <IonButtons slot="start">
               <IonButton fill="clear"></IonButton>
             </IonButtons>
