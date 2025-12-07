@@ -25,13 +25,11 @@ import {
   timeOutline,
 } from "ionicons/icons";
 import React, { useState, useRef } from "react";
-import { useTasks } from "./TaskContext";
 import { useAuth } from "../auth/AuthContext";
 import "./Profile.css";
 
 function Profile() {
   // Dynamic Context Data (Needed for the "Done" counter)
-  const { tasksDone } = useTasks();
 
   const { user } = useAuth(); 
   const displayEmail = user?.email ?? "your.email@example.com";
@@ -149,7 +147,7 @@ function Profile() {
                 <IonCol size="6" style={{ paddingRight: "8px" }}>
                   <div className="inspiration-card mono-font">
                     <span className="badge">Done</span>
-                    <p className="insp-quote">{tasksDone}</p>
+                    <p className="insp-quote">{0}</p>
                     <div className="insp-footer">Tasks Completed</div>
                   </div>
                 </IonCol>
