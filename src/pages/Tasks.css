@@ -68,10 +68,9 @@ ion-toolbar ion-button {
   border-radius: 8px;
   background: linear-gradient(135deg, #fcfcfd, #b1c5fc);
   padding: 10px;
-  height: 160px;
   display: flex;
   margin: 10px;
-  margin-bottom: -60px;
+  margin-bottom: 0;
   flex-direction: column;
   justify-content: space-between;
 }

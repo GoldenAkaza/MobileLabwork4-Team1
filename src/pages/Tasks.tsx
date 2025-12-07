@@ -417,8 +417,6 @@ const Tasks: React.FC = () => {
               )}
             </IonRow>
           </IonGrid>
-
-          <div style={{ height: "80px" }}></div>
         </div>
           <IonToast
             isOpen={toast.show}
