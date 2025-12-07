@@ -14,7 +14,6 @@ import { IonReactRouter } from "@ionic/react-router";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import ChangePassword from "./pages/ChangePassword";
 import { AuthProvider, useAuth } from "./auth/AuthContext";
@@ -67,8 +66,7 @@ const AppInner: React.FC = () => {
         <IonRouterOutlet>
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
-          <Route path="/welcome" exact component={Welcome} />
-          <PrivateRoute path="/home" exact component={Home} />
+          <PrivateRoute path="/welcome" exact component={Welcome} />
           <PrivateRoute path="/tasks" exact component={Tasks} />
           <PrivateRoute path="/settings" exact component={Settings} />
           <PrivateRoute path="/Profile" exact component={Profile} />

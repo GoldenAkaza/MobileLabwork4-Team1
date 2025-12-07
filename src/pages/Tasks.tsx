@@ -61,7 +61,6 @@ type PastQuote = {
 
 const Tasks: React.FC = () => {
   const { user } = useAuth();
-  const history = useHistory();
 
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskText, setNewTaskText] = useState<string>("");
