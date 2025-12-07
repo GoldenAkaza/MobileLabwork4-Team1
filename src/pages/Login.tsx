@@ -29,7 +29,7 @@ export default function Login() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      history.replace("/home");
+      history.replace("/welcome");
     } catch (e: unknown) {
       setError(e instanceof FirebaseError ? e.message : String(e));
     }
@@ -39,7 +39,7 @@ export default function Login() {
     setError(null);
     try {
       await signInWithPopup(auth, googleProvider);
-      history.replace("/home");
+      history.replace("/welcome");
     } catch (e: unknown) {
       setError(e instanceof FirebaseError ? e.message : String(e));
     }
