@@ -20,7 +20,6 @@ import {
   IonNote,
 } from "@ionic/react";
 import {
-  chevronBackOutline,
   cameraReverseOutline,
   bookOutline,
   timeOutline,
@@ -65,10 +64,8 @@ function Profile() {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonButton fill="clear">
-              <IonIcon icon={chevronBackOutline} />
-            </IonButton>
-          </IonButtons>
+              <IonButton fill="clear"></IonButton>
+            </IonButtons>
           <IonTitle>User Profile</IonTitle>
         </IonToolbar>
       </IonHeader>

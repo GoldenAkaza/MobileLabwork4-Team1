@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  IonBackButton,
   IonButtons,
   IonButton,
   IonContent,
@@ -137,9 +136,9 @@ export default function Settings() {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar className="custom-header">
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/home" />
+            <IonButton fill="clear"></IonButton>
           </IonButtons>
           <IonTitle>Settings</IonTitle>
         </IonToolbar>

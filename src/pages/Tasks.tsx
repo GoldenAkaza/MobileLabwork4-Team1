@@ -22,7 +22,6 @@ import {
 } from "@ionic/react";
 import {
   checkmarkCircle,
-  chevronBackOutline,
   personCircle,
   trashOutline,
 } from "ionicons/icons";
@@ -215,9 +214,7 @@ const Tasks: React.FC = () => {
       <IonHeader>
         <IonToolbar className="custom-header">
           <IonButtons slot="start">
-            <IonButton fill="clear" onClick={() => history.goBack()}>
-              <IonIcon icon={chevronBackOutline} />
-            </IonButton>
+            <IonButton fill="clear"></IonButton>
           </IonButtons>
           <IonTitle>My Study Planner</IonTitle>
         </IonToolbar>

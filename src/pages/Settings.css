@@ -18,6 +18,11 @@
   background: transparent !important;
 }
 
+ion-toolbar.custom-header {
+  --background: #ffffff;
+  font-weight: bold;
+}
+
 body.dark .settings-card {
   background: #020b1f !important; /* using your theme color */
   border-radius: 18px;
