@@ -43,7 +43,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../auth/AuthContext";
-import { useHistory } from "react-router-dom";
 import { getMotivationalQuote } from "../services/quotes";
 
 type Task = {
@@ -182,7 +181,7 @@ const Tasks: React.FC = () => {
         const { q, a } = await getMotivationalQuote();
 
         await addDoc(collection(db, "quotes"), {
-        userId: user.uid,
+        userId: user?.uid,
         quote: q,
         author: a,
         createdAt: serverTimestamp(),
