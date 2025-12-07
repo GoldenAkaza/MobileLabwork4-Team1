@@ -293,7 +293,7 @@ ion-tab-bar {
 }
 
 /*Task Dark mode*/
-body.dark .content-background {
+body.dark .tasks-container {
   --background: linear-gradient(135deg, #1a2550, #0e142f);
   color: #e8edff;
 }
@@ -302,8 +302,8 @@ body.dark ion-toolbar.custom-header {
   --background: #020b1f;
 }
 
-body.dark .welcome-content {
-  background: var(--card-bg-dark);
+body.dark .tasks-content {
+  background: #020b1f;
   color: #d2dcff;
 }
 

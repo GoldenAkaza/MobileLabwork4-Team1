@@ -43,7 +43,7 @@ body.dark .welcome-container {
 }
 
 body.dark .login-card {
-  background-color: var(--card-bg-dark);
+  background-color: #020b1f;
   box-shadow: none;
 }
 
