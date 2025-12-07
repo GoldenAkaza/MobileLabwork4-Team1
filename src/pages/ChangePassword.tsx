@@ -23,6 +23,7 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
+import "./ChangePassword.css";
 
 const ChangePassword: React.FC = () => {
   const { user } = useAuth();
@@ -93,7 +94,7 @@ const ChangePassword: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar class="Password-toolbar">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/settings" />
           </IonButtons>
@@ -101,7 +102,7 @@ const ChangePassword: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent className="ion-padding">
+      <IonContent className="Password-container">
         <IonList>
           <IonItem>
             <IonLabel position="stacked">Current Password</IonLabel>

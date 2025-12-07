@@ -151,6 +151,11 @@ body.dark ion-item {
   --border-color: #1e2a4d !important;
   color: #c9d6ff;
 }
+
+body.dark ion-list{
+background: #020b1f !important;
+}
+
 body.dark .inspiration-card {
   background: linear-gradient(135deg, #1f2a44, #121729);
   --background: linear-gradient(135deg, #1f2a44, #121729);
