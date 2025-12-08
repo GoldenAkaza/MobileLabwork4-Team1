@@ -28,7 +28,7 @@ export default function Register() {
     setError(null);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      history.replace("/home");
+      history.replace("/welcome");
     } catch (e: unknown) {
       setError(e instanceof FirebaseError ? e.message : String(e));
     }

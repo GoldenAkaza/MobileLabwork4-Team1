@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useLocation } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -59,27 +59,32 @@ const PrivateRoute: React.FC<{
   );
 };
 
-const AppInner: React.FC = () => {
-  return (
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" exact component={Register} />
-          <PrivateRoute path="/welcome" exact component={Welcome} />
-          <PrivateRoute path="/tasks" exact component={Tasks} />
-          <PrivateRoute path="/settings" exact component={Settings} />
-          <PrivateRoute path="/Profile" exact component={Profile} />
-          <PrivateRoute
-            path="/change-password"
-            exact
-            component={ChangePassword}
-          />
-          <Route exact path="/">
-            <Redirect to="/welcome" />
-          </Route>
-        </IonRouterOutlet>
+const Tabs: React.FC = () => {
+  const location = useLocation();
+  const hideTabBar = ["/login", "/register"].includes(
+    location.pathname.toLowerCase()
+  );
 
+  return (
+    <IonTabs>
+      <IonRouterOutlet>
+        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact component={Register} />
+        <PrivateRoute path="/welcome" exact component={Welcome} />
+        <PrivateRoute path="/tasks" exact component={Tasks} />
+        <PrivateRoute path="/settings" exact component={Settings} />
+        <PrivateRoute path="/Profile" exact component={Profile} />
+        <PrivateRoute
+          path="/change-password"
+          exact
+          component={ChangePassword}
+        />
+        <Route exact path="/">
+          <Redirect to="/welcome" />
+        </Route>
+      </IonRouterOutlet>
+
+      {!hideTabBar && (
         <IonTabBar slot="bottom">
           <IonTabButton tab="home" href="/welcome">
             <IonIcon icon={homeOutline} />
@@ -98,7 +103,15 @@ const AppInner: React.FC = () => {
             <IonLabel>Settings</IonLabel>
           </IonTabButton>
         </IonTabBar>
-      </IonTabs>
+      )}
+    </IonTabs>
+  );
+};
+
+const AppInner: React.FC = () => {
+  return (
+    <IonReactRouter>
+      <Tabs />
     </IonReactRouter>
   );
 };
