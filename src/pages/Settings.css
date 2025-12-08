@@ -39,3 +39,7 @@ body.dark .settings-container {
   --background: linear-gradient(135deg, #1a2550, #0e142f);
   display: flex;
 }
+
+body.dark ion-icon {
+  color: #c9d6ff !important;
+}
