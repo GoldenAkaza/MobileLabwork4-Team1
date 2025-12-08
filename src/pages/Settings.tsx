@@ -156,9 +156,7 @@ export default function Settings() {
 
             <IonItem lines="full">
               <IonIcon slot="start" icon={mailOutline} />
-              <IonLabel>
-                <p>Email</p>
-              </IonLabel>
+              <IonLabel>Email</IonLabel>
               <IonNote slot="end">
                 {user?.email ?? "your.email@example.com"}
               </IonNote>
